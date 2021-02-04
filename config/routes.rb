@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
   root :to => "homes#top"
+  get "/about" => "homes#about"
   resources :user, only:[:show, :edit, :update] do
     member do
       get 'confirm' => 'users#confirm'
       patch 'hide' => 'users#hide'
+      put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end
   end
 
@@ -14,9 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :post, only:[:create, :destroy] do
-    resource :favorites, only:[:create, :destroy]
+  resources :posts do
+    resources :favorites, only:[:create, :destroy]
   end
 
-  resources :posts
+  resources :genres, only: [:index]
 end
+

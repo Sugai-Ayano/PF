@@ -1,0 +1,12 @@
+<h2>タイトル</h2>
+<p><%= @post.title %></p>
+<h2>本文</h2>
+<p><%= @post.content %></p>
+<h2>画像</h2>
+<%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+<%= link_to "編集", edit_post_path(@post.id) %>
+<% link_to "user/showページへ", url:user_path(post.id) %>
+<% link_to "戻る", url:post_path %>
