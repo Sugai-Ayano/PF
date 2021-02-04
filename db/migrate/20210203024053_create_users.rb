@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name, null: false
       t.string :email, default: "", null: false
+      t.text :introduction
       t.bloolean :is_deleted, defoult: false, null: false
       t.string :image_id
       t.string :encrypted_password, default: "", null: false
