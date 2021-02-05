@@ -1,12 +1,34 @@
-<h2>タイトル</h2>
-<p><%= @post.title %></p>
-<h2>本文</h2>
-<p><%= @post.content %></p>
-<h2>画像</h2>
-<%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-<%= link_to "編集", edit_post_path(@post.id) %>
-<% link_to "user/showページへ", url:user_path(post.id) %>
-<% link_to "戻る", url:post_path %>
+<h2>投稿詳細</h2>
+  <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
+    <%= link_to user_path(@post.user) do %>
+    <p><%= @post.created_at %></p>
+    <p><%= @post.title %></p>
+    <p><%= genre.name %></p>
+    <p><%= @post.content %></p>
+    <% end %>
+
+    <% if @book.user == current_user %>
+      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+      <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
+    <% end %>
+
+    <!--いいね機能-->
+    <% if current_user.already_favorited?(@post) %>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        <i class="fas fa-heart" style="color: red;"></i>
+      <% end %>
+      <span style="color: red;"><%= @post.favorites.count %></span>
+    <% else %>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+      <%= @post.favorites.count %>
+    <% end %>
+    <!--コメント機能-->
+    <%= form_for [@post, @comment] do |f| %>
+      <%= f.text_field :content %>
+      <br>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+
+<%= link_to "ホームへ戻る", posts_path %>

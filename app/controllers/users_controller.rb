@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only:[:edit, :update]
 
+  def index
+
+  end
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -34,6 +37,10 @@ class UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理が完了しました。"
     redirect_to root_path
+  end
+
+  def zipedit
+  params.require(:user).permit(:postcode, :prefecture_name, :address_city, :address_street, :address_building)
   end
 
   private

@@ -1,3 +1,24 @@
-<% if user_signed_in? && @user.id == current_user.id %>
-  <%= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>プロフィール編集</h2>
+    <%= form_with model:@name, local:true do |f| %>
+      <%= render 'layouts/errors', obj: @user %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control name" %>
+      </div>
+     <div class="form-group">
+        <%= f.label :image %>
+        <%= f.attachment_field :profile_image, class: "form-control-file user_image" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   def create
-    @post = Post.find(params[:post_id])
-    @post_comment = PostComments.new(post_comment_params)
-    @post_comment.post_id = current_user.id
-    unless @post_comment.save
-    render 'error'
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
     end
+
   end
 
   def destroy

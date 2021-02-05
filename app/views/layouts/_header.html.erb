@@ -1,0 +1,59 @@
+    <html>
+      <head>
+        <title>Irodori</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      </head>
+      <body>
+        <header>
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                  <% if user_signed_in? %>
+                    <p class="p-3 text-info">ようこそ、<%= current_user.name %>さん</p>
+                    <li class="nav-item">
+                      <%= link_to "ジャンル", user_path(current_user.id), class: "fas fa-user nav-link text-teal m-3" %>
+                        <%= form_with model: genre.name do |f| %>
+                         <%= f.select :season, [["春", "春"], ["夏", "夏"], ["秋", "秋"], ["冬", "冬"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+                         <%= f.submit '送信'%>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "マイページ", user_path(current_user.id), class: "fas fa-user nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "投稿する", new_post_path, class: "fas fa-user nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ユーザー一覧", user_path, class: "fas fa-user nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", user_registration_path, method: :delete, class: "fas fa-user nav-link text-teal m-3" %>
+                    </li>
+                  <% else %>
+                    <li class="nav-item">
+                      <%= link_to "ホーム", root_path, class: "fas fa-link nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "アバウト", about_path, class: "fas fa-link nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログイン", user_session_path, class: "fas fa-link nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "新規登録", new_user_registration_path, class: "fas fa-link nav-link text-teal m-3" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "簡単ログイン", user_session_path, class: "fas fa-link nav-link text-teal m-3" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </body>
+    </html>

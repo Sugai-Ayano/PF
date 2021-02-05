@@ -37,10 +37,12 @@
     </div>
     <div class="access-buttons">
       <a href="/about">
-        <button class="btn" type="submit">
+        <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+        
+        <!--<button class="btn" type="submit">-->
         <!--<i class="fa fa-sun-o" aria-hidden="true" style="color: #8CC3E2; font-size: 40px;"></i>-->
-        簡単ログイン
-        </button>
+        <!--簡単ログイン-->
+        <!--</button>-->
       </a>
     </div>
   </div>

@@ -1,8 +1,28 @@
-<h2>プロフィール編集</h2>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>  <%= f.submit "変更を保存" %>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>投稿編集</h2>
+    <%= form_with model:@post, local:true do |f| %>
+      <%= render 'layouts/errors', obj: @user %>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.attachment_field :post_image, class: "form-control-file post_image" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control title" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :genre_name %>
+        <%= f.text_area :genre_name, class: "form-control genre_name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :caption %>
+        <%= f.text_area :caption, class: "form-control caption" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

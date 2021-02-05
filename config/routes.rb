@@ -2,7 +2,21 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "homes#top"
   get "/about" => "homes#about"
-  resources :user, only:[:show, :edit, :update] do
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
+  get 'search/search'
+  get '/search', to: 'search#search'
+
+devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+
+
+  resources :user, only:[:index, :show, :edit, :update] do
     member do
       get 'confirm' => 'users#confirm'
       patch 'hide' => 'users#hide'
@@ -19,8 +33,11 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :favorites, only:[:create, :destroy]
+    resources :comments, only: [:create]
   end
 
   resources :genres, only: [:index]
+
+
 end
 
