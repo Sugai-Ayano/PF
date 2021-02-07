@@ -69,14 +69,4 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
-  def hoge
-    piyo = "piyo"
-    puts piyopiyo
-  end
-
-  def piyopiyo
-    "piyopiyo"
-  end
-
-
 end

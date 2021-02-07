@@ -1,0 +1,18 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |users| %>
+      <tr>
+        <td><%= attachment_image_tag(users, :profile_image, :fill, 20, 20, fallback: "no_image.jpg") %></td>
+        <td><%= users.name %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

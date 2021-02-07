@@ -2,16 +2,17 @@
 <!-- form_with部分 -->
 <%= form_with model: @post, local:true, method: 'post' do |f| %>
   <h4>タイトル</h4>
-  <%= f.text_field: post.title, id: :post_title %>
+  <%= f.text_field :title, id: :post_title %>
   <h4>ジャンル選択</h4>
 
-  <%= f.select: post.genre, [["春", 0 ], ["夏", 1 ], ["秋", 2 ], ["冬", 3 ], ["その他", 4 ]], include_blank: "選択して下さい" %>
+  <%= f.select :genre_id, [["春", 0 ], ["夏", 1 ], ["秋", 2 ], ["冬", 3 ], ["その他", 4 ]], include_blank: "選択して下さい" %>
 
   <h4>本文</h4>
-  <%= f.text_area: post.caption, id: :post_caption %>
+  <%= f.text_area :caption, id: :post_caption %>
 
   <h4>画像</h4>
   <!-- 追加部分 -->
-  <%= f.attachment_field: post.image, id: :post_image %><br>
+  <%= f.attachment_field :image, id: :image %><br>
   <%= f.submit '投稿' %>
 <% end %>
+<p><%= link_to "戻る", posts_path %></p>

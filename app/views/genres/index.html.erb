@@ -1,34 +1,42 @@
+<%= if @posts == nil %>
+<h1>セレクトボックスからジャンルをえらんでね</h1>
+
+<% else %>
+
 <h1><% @genre.name %>の投稿</h1>
-      <p><%= link_to "みんなの投稿へ戻る", posts_path %></p>
-      <div class="post-containar py-5">
-        <% @genres.each do |genre| %>
-      <div class="post w-50 mx-auto mt-4 shadow-lg">
-        <%= link_to post_path(post.id) do %>
-        <%= attachment_image_tag post_image, :image, class:"card-img-top"; %>
-        <% end %>
+<p><%= link_to "みんなの投稿へ戻る", posts_path %></p>
+<div class="post-containar py-5">
+  <% @posts.each do |post| %>
+    <div class="post w-50 mx-auto mt-4 shadow-lg">
+      <%= link_to post_path(post.id) do %>
+        <%= attachment_image_tag post, :image, class:"card-img-top"; %>
+      <% end %>
+
       <div class="post-body">
         <div class="row">
           <div class="col-2">
-            <%= attachment_image_tag image.user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
           </div>
-        <div class="col-10">
-          <p class="post-time">
-            <%= post.created_at %>
-          </p>
-          <p class="post-title">
-            <%= link_to(post_path(post.id), class:"text-dark") do %>
-               <%= post_title %>
-            <% end %>
-          </p>
-          <p class="post-text"><%= post.caption %></p>
-          <span><i class="fas fa-user"></i> 投稿者<%= post.user.name %> ｜ </span>
-          <span class="comments-count">コメント数: <%= @post.post_comments.count %>件</span>
-          <span><%= link_to "#{post_comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
-        </div>
+          <div class="col-10">
+            <p class="post-time">
+              <%= post.created_at %>
+            </p>
+            <p class="post-title">
+              <%= link_to(post_path(post.id), class:"text-dark") do %>
+                 <%= post.title %>
+              <% end %>
+            </p>
+            <p class="post-text"><%= post.caption %></p>
+            <span><i class="fas fa-user"></i> 投稿者<%= post.user.name %> ｜ </span>
+            <span class="comments-count">コメント数: <%= post.comments.count %>件</span>
+            <span><%= link_to "#{post.comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
+          </div>
         </div>
       </div>
-      </div>
+    </div>
   <% end %>
-  <%= paginate post_images %>
+
+  <%= paginate @posts %>
 </div>
 
+<% end %>
