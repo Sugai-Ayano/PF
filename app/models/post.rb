@@ -4,11 +4,13 @@ class Post < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many :comments
   belongs_to :user
+  enum genre: { 春: 0, 夏: 1, 秋: 2, 冬: 3, その他: 4 }
 
   attachment :image, destroy: false
   validates :title, presence: true
   validates :image_id, presence: true
-  validates :content, presence: true, length: { maximum: 200 }
+  validates :caption, presence: true, length: { maximum: 200 }
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

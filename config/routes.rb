@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'registrations/sign_up_params'
   devise_for :users
   root :to => "homes#top"
   get "/about" => "homes#about"
@@ -6,17 +7,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-
   get 'search/search'
   get '/search', to: 'search#search'
 
-devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
-
-
-  resources :user, only:[:index, :show, :edit, :update] do
+  resources :users, only:[:index, :show, :edit, :update] do
     member do
       get 'confirm' => 'users#confirm'
       patch 'hide' => 'users#hide'

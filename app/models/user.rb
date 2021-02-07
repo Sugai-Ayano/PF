@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  include JpPrefecture
   jp_prefecture :prefecture_code
 
   has_many :favorites, dependent: :destroy
@@ -39,10 +40,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true, length: {minimum:6}
   validates :introduction, length: { maximum: 50 }
-  validates :postal_code, presence: true
-  validates :prefecture_code, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
+
 
   # 退会機能
   def active_for_authentication?
@@ -70,4 +68,15 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+
+  def hoge
+    piyo = "piyo"
+    puts piyopiyo
+  end
+
+  def piyopiyo
+    "piyopiyo"
+  end
+
+
 end

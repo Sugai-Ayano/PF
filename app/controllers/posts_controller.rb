@@ -4,13 +4,17 @@ class PostsController < ApplicationController
 
   def index
     @post_all = Post.all
+    @post_all = Post.page(params[:page]).per(9)
     @post = Post.new
-    @posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    # @posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
     # いいね順に上位３つの投稿を表示
-    @all_ranks = Note.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+    # @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
+
   def show
+    @posts = Post.all
+    @post_all = Post.page(params[:page]).per(9)
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment_new
@@ -23,6 +27,7 @@ class PostsController < ApplicationController
 
 
   def new
+    @post = Post.new
   end
 
   def edit
@@ -32,10 +37,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post),notice: "You have created post successfully."
+      redirect_to post_path(@post.id), notice: "You have created post successfully."
+    byebug
     else
-      @post = Post.all
-      redirect_back(fallback_location: post_path)
+      render :new
     end
   end
 
@@ -43,7 +48,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "You have updated post successfully."
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -53,9 +58,15 @@ class PostsController < ApplicationController
   end
 end
 
+# kaminari
+  def search
+  @searched_posts = Post.search(params[:search])
+  @searched_posts = @searched_posts.page(params[:page])
+  end
+
 private
 def post_params
-  params.require(:post).permit(:content)
+  params.permit(:caption)
 end
 
 def ensure_correct_user

@@ -14,11 +14,11 @@ class HomesController < ApplicationController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
-  def unsubscribe
+  def confirm
     @user = User.find_by(name: params[:name])
   end
 
-  def withdraw
+  def hide
     @user = User.find_by(name: params[:name])
     @user.update(is_valid: false)
     reset_session

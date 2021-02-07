@@ -1,10 +1,10 @@
 <h2>投稿詳細</h2>
   <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
     <%= link_to user_path(@post.user) do %>
-    <p><%= @post.created_at %></p>
-    <p><%= @post.title %></p>
-    <p><%= genre.name %></p>
-    <p><%= @post.content %></p>
+      <p><%= @post.created_at %></p>
+      <p><%= @post.title %></p>
+      <p><%= genre.name %></p>
+      <p><%= @post.content %></p>
     <% end %>
 
     <% if @book.user == current_user %>
@@ -31,4 +31,4 @@
       <%= f.submit 'コメントする' %>
     <% end %>
 
-<%= link_to "ホームへ戻る", posts_path %>
+  <%= link_to "ホームへ戻る", posts_path %>

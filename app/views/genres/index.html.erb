@@ -1,7 +1,7 @@
-<h1><% genre.name %>の投稿</h1>
-      <p><%= link_to "みんなの投稿へ戻る", post_path %></p>
+<h1><% @genre.name %>の投稿</h1>
+      <p><%= link_to "みんなの投稿へ戻る", posts_path %></p>
       <div class="post-containar py-5">
-        <% @genre.each do |genre| %>
+        <% @genres.each do |genre| %>
       <div class="post w-50 mx-auto mt-4 shadow-lg">
         <%= link_to post_path(post.id) do %>
         <%= attachment_image_tag post_image, :image, class:"card-img-top"; %>

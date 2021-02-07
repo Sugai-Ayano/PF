@@ -3,15 +3,13 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update]
 
   def index
-
   end
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
     @post = Post.new
     # ユーザーがいいねしている投稿一覧が欲しい
-    user = User.find(params[:id])
-    @favorited_posts = user.favorited_posts
+    @favorited_posts = @user.favorited_posts
   end
 
   def edit
