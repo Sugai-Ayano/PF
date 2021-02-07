@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def show
     @posts = Post.all
-    @post_all = Post.page(params[:page]).per(9)
+    @post_all = Post.page(params[:page]).per(6)
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment_new
