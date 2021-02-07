@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many :comments
   belongs_to :user
-  enum genre: { 春: 0, 夏: 1, 秋: 2, 冬: 3, その他: 4 }
+  enum genre_id: { 春: 0, 夏: 1, 秋: 2, 冬: 3, その他: 4 }
 
   attachment :image, destroy: false
   validates :title, presence: true

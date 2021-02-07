@@ -3,24 +3,29 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update, :destroy]
 
   def index
-    @post_all = Post.all
-    @post_all = Post.page(params[:page]).per(9)
-    @post = Post.new
-    # @posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    # いいね順に上位３つの投稿を表示
-    # @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+    if params[:season] == nil
+      @post_all = Post.all
+      @post_all = Post.page(params[:page]).per(9)
+      @post = Post.new
+      # @posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+      # いいね順に上位３つの投稿を表示
+      # @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+    else
+      @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(9)
+      @genre_name = params[:season]
+    end
   end
 
 
   def show
     @posts = Post.all
-    @post_all = Post.page(params[:page]).per()
+    @post_all = Post.page(params[:page]).per(9)
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @comment = Comment_new
+    @comment = Comment.new
     # 投稿にいいねしていいるユーザー一覧が欲しい
       post = Post.find(params[:id])
-    if post.user -=  current_user
+    if post.user ==  current_user
       @favorited_users = post.favorited_users
     end
   end
@@ -36,6 +41,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.genre_id = Post.genre_ids[@post.genre_id]
+    @genre_name = params[:season]
     if @post.save
       redirect_to post_path(@post.id), notice: "You have created post successfully."
     else
