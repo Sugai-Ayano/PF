@@ -1,5 +1,8 @@
 class HomesController < ApplicationController
   def top
+    if current_user != nil
+      redirect_to posts_path
+    end
   end
 
   def about
