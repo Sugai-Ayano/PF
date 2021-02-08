@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>プロフィール編集</h2>
     <%= form_with model:@user, local:true do |f| %>
-      <%#= render 'layouts/errors' %>
+      <%= render 'layouts/errors', obj: @post %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control name" %>

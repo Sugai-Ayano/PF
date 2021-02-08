@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :caption, presence: true, length: { maximum: 200 }
 
   def favorited_by?(user)
+    # その投稿にuser_idとpost_idが存在しているかを調べる
     favorites.where(user_id: user.id).exists?
   end
   # 検索機能

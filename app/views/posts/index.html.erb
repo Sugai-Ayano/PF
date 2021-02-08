@@ -8,7 +8,7 @@
         </div>
         <% if @posts == nil %>
           <h1>みんなの投稿</h1>
-          <p>投稿を見たい季節を選んでください</p>
+          <p>見たい投稿の季節を選んでください</p>
           <%= link_to "春", posts_path(:season => "春") %>
           <%= link_to "夏", posts_path(:season => "夏") %>
           <%= link_to "秋", posts_path(:season => "秋") %>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-10">
                       <p class="post-time">
-                        <%= post.created_at %>
+                        <%= post.created_at.strftime("%Y-%m-%d") %>
                       </p>
                       <p class="post-title">
                         <%= link_to(post_path(post.id), class:"text-dark") do %>

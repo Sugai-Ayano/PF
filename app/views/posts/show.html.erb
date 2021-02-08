@@ -1,34 +1,27 @@
 <h2>投稿詳細</h2>
   <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
     <%= link_to user_path(@post.user) do %>
-      <p><%= @post.created_at %></p>
+      <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <p><%= @post.user.name %></p>
       <p><%= @post.title %></p>
       <p><%= @genre_name %></p>
       <p><%= @post.caption %></p>
     <% end %>
 
-    <% if @post.user == current_user %>
-      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
-      <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
-    <% end %>
+  <% if @post.user == current_user %>
+    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+    <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
+  <% end %>
 
     <!--いいね機能-->
-    <% if current_user.already_favorited?(@post) %>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        <i class="fas fa-heart" style="color: red;"></i>
-      <% end %>
-      <span style="color: red;"><%= @post.favorites.count %></span>
-    <% else %>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-      <%= @post.favorites.count %>
-    <% end %>
+  <div class="favorite-btn">
+    <%= render 'favorites/favorite-btn', post: @post %>
+  </div>
+  <%= @post.favorites.count %>
     <!--コメント機能-->
-    <%= form_for [@post, @comment] do |f| %>
-      <%= f.text_field :content %>
-      <br>
-      <%= f.submit 'コメントする' %>
-    <% end %>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_field :content %><br>
+    <%= f.submit 'コメントする' %>
+  <% end %>
 
   <%= link_to "ホームへ戻る", posts_path %>

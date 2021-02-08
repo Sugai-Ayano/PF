@@ -1,12 +1,12 @@
     <h4>マイページ</h4>
-    <%#= attachment_image_tag(user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg") %>
-      <p>名前</p><% @current_user.name %>
-      <p>紹介文</p><% @current_user.introduction %>
-      <p><%= link_to "編集", edit_user_path(@user) %></p>
+    <%= attachment_image_tag @user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+      <p>名前：<%= @current_user.name %> </p>
+      <p>紹介文：　<% @current_user.introduction %></p>
+      <p><%= link_to "マイページを編集する", edit_user_path(@user) %></p>
       <p>フォロー：<%#= followed.count %>人<br>フォロワー：<%#= follower.count %>人</p>
-      <% render "/users/follow" %>
+      <%= render "/users/follow" %>
 
-     <h2><% @current_user.name %>さんの投稿</h2>
+     <h2><%= @current_user.name %>さんの投稿</h2>
         <div class="col-xs-12 col-md-6 col-lg-4">
           <table class="post-block">
             <tbody>
@@ -15,12 +15,11 @@
                   <% @posts.each do |post| %>
                     <div class="post w-50 mx-auto mt-4 shadow-lg">
                       <%= link_to post_path(post.id) do %>
-                        <%#= attachment_image_tag post_image, :image, class:"card-img-top"; %>
+                        <%= attachment_image_tag post, :image, class:"card-img-top"; %>
                       <% end %>
                     <div class="post-body">
                       <div class="row">
                         <div class="col-2">
-                          <%#= attachment_image_tag image.user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
                         </div>
                         <div class="col-10">
                           <p class="post-title">
@@ -32,7 +31,7 @@
                           <span>
                             <i class="fas fa-user"></i>
                              投稿者<%= post.user.name %> ｜ </span>
-                          <span><%#= link_to "#{post_comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
+                          <span><%= link_to "#{post.comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
                         </div>
                       </div>
                     </div>

@@ -36,6 +36,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @posts = Post.all
   end
 
   def create
@@ -46,7 +48,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id), notice: "You have created post successfully."
     else
-      byebug
       render :new
     end
   end
@@ -60,8 +61,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_path(@user.id)
   end
 
 # kaminari
@@ -72,12 +74,12 @@ class PostsController < ApplicationController
 
   private
   def post_params
-     params.require(:post).permit(:caption, :title, :image, :genre_id)
+     params.require(:post).permit(:caption, :title, :image, :genre_id, :user_id)
   end
 
   def ensure_correct_user
-    @post = Post(params[:id])
-    unless post.user == current_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
       redirect_to posts_path
     end
   end

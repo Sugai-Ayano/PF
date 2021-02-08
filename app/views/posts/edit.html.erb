@@ -2,22 +2,21 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>投稿編集</h2>
-    <%= form_with model:@post, local:true do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
+    <%= form_with model: @post, url: post_path, local:true do |f| %>
+      <%#= render 'layouts/errors', obj: @user %>
       <div class="form-group">
-        <%= f.label :image %>
-        <%= f.attachment_field :post_image, class: "form-control-file post_image" %>
-      </div>
+        <%= f.label :投稿画像 %>
+        <%= attachment_image_tag @post, :image, class:"card-img-top"; %>      </div>
       <div class="form-group">
-        <%= f.label :title %>
+        <%= f.label :タイトル %>
         <%= f.text_field :title, class: "form-control title" %>
       </div>
       <div class="form-group">
-        <%= f.label :genre_name %>
-        <%= f.text_area :genre_name, class: "form-control genre_name" %>
+        <%= f.label :ジャンル名 %>
+        <%= f.select :genre_id, Post.genre_ids.keys, include_blank: "選択して下さい" %>
       </div>
       <div class="form-group">
-        <%= f.label :caption %>
+        <%= f.label :説明 %>
         <%= f.text_area :caption, class: "form-control caption" %>
       </div>
       <div class="form-group">
