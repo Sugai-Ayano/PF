@@ -1,0 +1,15 @@
+<% post.post_comments.each do |post_comment| %>
+  <% post_comment_user = post_comment.user %>
+  <tr>
+  	<td>
+  		<%= link_to user_path(post_comment_user), class: "user_#{post_comment_user.id}" do %>
+    		<%= attachment_image_tag post_comment_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+    		<%= post_comment_user.name %>
+  		<% end %>
+  	</td>
+  	<td><%= post_comment.content %></td>
+  	<% if current_user == post_comment_user %>
+    	<td><%= link_to 'Destroy', post_post_comments_path(post_comment.post_id, post_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+  	<% end %>
+  </tr>
+<% end %>

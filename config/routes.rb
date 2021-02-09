@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "homes#top"
   get "/about" => "homes#about"
-  post '/homes/guest_sign_in', to: 'homes#new_guest'
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-  end
+
+  # ゲストログイン機能
+  # post '/homes/guest_sign_in', to: 'homes#new_guest'
+  # devise_scope :user do
+  #   post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  # end
+
   get 'search/search'
   get '/search', to: 'search#search'
 
@@ -16,18 +19,21 @@ Rails.application.routes.draw do
       patch 'hide' => 'users#hide'
       put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end
+      resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
   end
 
-  resource :relationships, only:[:create, :destroy] do
-    member do
-      get 'follows' => 'relationships#follows', as: 'follows'
-    	 get 'followers' => 'relationships#followers', as: 'followers'
-    end
-  end
+  # resources :relationships, only:[:create, :destroy] do
+  #   member do
+  #     get 'follows' => 'relationships#follows', as: 'follows'
+  #   	 get 'followers' => 'relationships#followers', as: 'followers'
+  #   end
+  # end
 
   resources :posts do
     resource :favorites, only:[:create, :destroy]
-    resources :comments, only: [:create]
+    resources :post_comments, only: [:create]
   end
 
   resources :genres, only: [:index] do

@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   has_many :genres
   has_many :favorites
   has_many :favorited_users, through: :favorites, source: :user
-  has_many :comments
+  has_many :post_comments
   belongs_to :user
   enum genre_id: { 春: 0, 夏: 1, 秋: 2, 冬: 3, その他: 4 }
 

@@ -1,12 +1,12 @@
 <h2>投稿詳細</h2>
+<%#= link_to "users_path(user.id)" do %>
   <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
-    <%= link_to user_path(@post.user) do %>
-      <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-      <p><%= @post.user.name %></p>
-      <p><%= @post.title %></p>
-      <p><%= @genre_name %></p>
-      <p><%= @post.caption %></p>
-    <% end %>
+<%# end %>
+  <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+  <p><%= @post.user.name %></p>
+  <p><%= @post.title %></p>
+  <p><%= @genre_name %></p>
+  <p><%= @post.caption %></p>
 
   <% if @post.user == current_user %>
     <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
@@ -17,11 +17,15 @@
   <div class="favorite-btn">
     <%= render 'favorites/favorite-btn', post: @post %>
   </div>
-  <%= @post.favorites.count %>
-    <!--コメント機能-->
-  <%= form_for [@post, @comment] do |f| %>
-    <%= f.text_field :content %><br>
-    <%= f.submit 'コメントする' %>
-  <% end %>
 
-  <%= link_to "ホームへ戻る", posts_path %>
+    <!--コメント機能-->
+  <div class="comments-count">コメント数: <%= @post.post_comments.count %>
+  <div class="post_comments">
+    <%= render 'post_comments/index', post: @post %>
+    <%= form_with model:[@post,@post_comment] do |f| %>
+        <%= f.text_area :content, size:"90x5" %>
+        <%= f.submit '送信'%>
+    <% end %>
+  </div>
+  </div>
+

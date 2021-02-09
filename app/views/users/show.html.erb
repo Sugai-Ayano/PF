@@ -31,7 +31,7 @@
                           <span>
                             <i class="fas fa-user"></i>
                              投稿者<%= post.user.name %> ｜ </span>
-                          <span><%= link_to "#{post.comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
+                          <span><%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
                         </div>
                       </div>
                     </div>

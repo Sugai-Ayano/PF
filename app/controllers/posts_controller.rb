@@ -21,8 +21,8 @@ class PostsController < ApplicationController
     @posts = Post.all
     @post_all = Post.page(params[:page]).per(9)
     @post = Post.find(params[:id])
-    @comments = @post.comments
-    @comment = Comment.new
+    # @post_comments = @post.comments
+    @post_comment = PostComment.new
     # 投稿にいいねしていいるユーザー一覧が欲しい
       post = Post.find(params[:id])
     if post.user ==  current_user

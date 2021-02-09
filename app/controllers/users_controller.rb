@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+  
   def show
     @current_user = current_user
     @user = User.find(params[:id])
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def confirm
+    @user = User.find(params[:id])
   end
 
   def hide
