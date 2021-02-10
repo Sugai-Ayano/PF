@@ -1,0 +1,11 @@
+<h2>Follower Users</h2>
+<% if @users.exists? %>
+  <% @users.each do |user| %>
+    <%= user.name  %>
+    <%= attachment_image_tag user, :profile_image  %>
+    <%= render "/users/follow", user:user %>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
+<%= link_to "戻る", user_path(@user.id) %>

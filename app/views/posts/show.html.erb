@@ -1,9 +1,11 @@
 <h2>投稿詳細</h2>
-<%#= link_to "users_path(user.id)" do %>
+
   <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
-<%# end %>
+
   <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-  <p><%= @post.user.name %></p>
+  <%= link_to user_path(@post.user.id) do %>
+    <p><%= @post.user.name %></p>
+  <% end %>
   <p><%= @post.title %></p>
   <p><%= @genre_name %></p>
   <p><%= @post.caption %></p>
@@ -19,7 +21,7 @@
   </div>
 
     <!--コメント機能-->
-  <div class="comments-count">コメント数: <%= @post.post_comments.count %>
+  <div class="comments-count">コメント数: <%= @post.post_comments.count %>件
   <div class="post_comments">
     <%= render 'post_comments/index', post: @post %>
     <%= form_with model:[@post,@post_comment] do |f| %>

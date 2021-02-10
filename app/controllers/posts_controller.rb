@@ -18,10 +18,11 @@ class PostsController < ApplicationController
 
 
   def show
+   @post = Post.find(params[:id])
     @posts = Post.all
+    # その投稿をしたユーザー
+    @user = @post.user
     @post_all = Post.page(params[:page]).per(9)
-    @post = Post.find(params[:id])
-    # @post_comments = @post.comments
     @post_comment = PostComment.new
     # 投稿にいいねしていいるユーザー一覧が欲しい
       post = Post.find(params[:id])

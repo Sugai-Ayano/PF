@@ -8,8 +8,9 @@
   		<% end %>
   	</td>
   	<td><%= post_comment.content %></td>
-  	<% if current_user == post_comment_user %>
-    	<td><%= link_to 'Destroy', post_post_comments_path(post_comment.post_id, post_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
-  	<% end %>
-  </tr>
+  <% if user_signed_in? && post_comment.user_id == current_user.id %>
+   <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete,
+   class: "btn btn-danger" ,data: { confirm: "削除してもいいですか？" }, remote: true %>
+ <% end %>
 <% end %>
+

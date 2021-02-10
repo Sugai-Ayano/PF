@@ -1,12 +1,16 @@
+    <% if current_user == @user %>
     <h4>マイページ</h4>
     <%= attachment_image_tag @user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
       <p>名前：<%= @current_user.name %> </p>
       <p>紹介文：　<% @current_user.introduction %></p>
       <p><%= link_to "マイページを編集する", edit_user_path(@user) %></p>
-      <p>フォロー：<%#= followed.count %>人<br>フォロワー：<%#= follower.count %>人</p>
-      <%= render "/users/follow" %>
-
-     <h2><%= @current_user.name %>さんの投稿</h2>
+      <p>フォロー：<%= link_to @user.followings.count, user_followings_path(@user) %>人<br>
+      フォロワー：<%= link_to @user.followers.count, user_followers_path(@user) %>人</p>
+      <%= render "/users/follow", user:@user %>
+    <% else %>
+      <h4><%= @user.name %>さんのページ</h4>
+    <% end %>
+     <h2><%= @user.name %>さんの投稿</h2>
         <div class="col-xs-12 col-md-6 col-lg-4">
           <table class="post-block">
             <tbody>

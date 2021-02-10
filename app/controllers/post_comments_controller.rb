@@ -12,12 +12,11 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-   @post = Post.find(params[@post_id])
-   @post_comment = @post.post_comment.find(params[:id])
+  # @post_comment = PostComment.new(post_comment_params)
+  # コメントをfindmしてdestroyを呼び出す
+  # 削除したいコメントを呼び出す
+   @post_comment = @post.post_comments.find(params[:id])
    @post_comment.destroy
-  # unless @post_comment.save!
-  #     render 'error'
-  #   end
   end
 
   private
