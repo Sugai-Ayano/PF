@@ -16,3 +16,20 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.spring-top {
+  background-image: url(spring-top.jpg);
+}
+.summer-top {
+  background-image: url(summer-top.jpg);
+}
+.autumn-top {
+  background-image: url(autumn-top.jpg);
+}
+.winter-top {
+  background-image: url(winter-top.jpg);
+}
+
+#container{
+  height: 500px;
+}

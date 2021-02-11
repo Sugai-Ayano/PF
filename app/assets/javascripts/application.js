@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.jpostal
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
@@ -18,7 +19,6 @@
 //= require turbolinks
 //= require_tree .
 $(function () {
-  $(document).on('turbolinks:load', () => {
     $('#user_postal_code').jpostal({
       postcode: [
         '#user_postal_code'
@@ -29,5 +29,4 @@ $(function () {
         "#user_street": "%6%7"
       }
     });
-  });
 });

@@ -12,7 +12,6 @@ class User < ApplicationRecord
   #   registrations: 'users/registrations'
   # }
 
-
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :post_commnets
@@ -37,6 +36,7 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
+  # フォロー機能
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -48,8 +48,6 @@ class User < ApplicationRecord
   def followings?(user)
     followings.include?(user)
   end
-
-
 
   # 退会機能
   def active_for_authentication?
@@ -76,5 +74,18 @@ class User < ApplicationRecord
 
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  # 検索機能
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
   end
 end

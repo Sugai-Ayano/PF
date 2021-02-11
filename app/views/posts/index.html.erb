@@ -8,7 +8,7 @@
         </div>
         <% if @posts == nil %>
           <h1>みんなの投稿</h1>
-          <%= render 'layouts/search' %><br>
+          <%= render 'searches/search' %><br>
           <p>見たい投稿の季節を選んでください</p>
           <%= link_to "春", posts_path(:season => "春") %>
           <%= link_to "夏", posts_path(:season => "夏") %>

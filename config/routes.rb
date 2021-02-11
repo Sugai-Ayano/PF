@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   get 'registrations/sign_up_params'
   devise_for :users
   root :to => "homes#top"
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   # end
 
   get 'search/search'
-  get '/search', to: 'search#search'
+  get '/search', to: 'searches#search'
 
   resources :users, only:[:index, :show, :edit, :update] do
     member do
