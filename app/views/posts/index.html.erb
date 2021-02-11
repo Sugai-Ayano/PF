@@ -2,9 +2,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <!--<div class="sidebar">-->
-          <!--  <%#= render "posts/ranking" %>-->
-          <!--</div>-->
+          <div class="sidebar">
+            <%#= render "posts/ranking", all_ranks:@all_ranks %>
+          </div>
         </div>
         <% if @posts == nil %>
           <h1>みんなの投稿</h1>

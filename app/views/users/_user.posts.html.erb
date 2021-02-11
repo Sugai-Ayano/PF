@@ -1,0 +1,34 @@
+ <div class="col-xs-12 col-md-6 col-lg-4">
+          <table class="post-block">
+            <tbody>
+              <tr>
+                <div class="post-containar py-5">
+                  <% @posts.each do |post| %>
+                    <div class="post w-50 mx-auto mt-4 shadow-lg">
+                      <%= link_to post_path(post.id) do %>
+                        <%= attachment_image_tag post, :image, class:"card-img-top"; %>
+                      <% end %>
+                    <div class="post-body">
+                      <div class="row">
+                        <div class="col-2">
+                          </div>
+                          <div class="col-10">
+                          <p class="post-title">
+                            <%= link_to(post_path(post.id), class:"text-dark") do %>
+                               <%= post.title %>
+                            <% end %>
+                          </p>
+                          <p class="post-text"><%= post.caption %></p>
+                          <span>
+                            <i class="fas fa-user"></i>
+                             投稿者<%= post.user.name %> ｜ </span>
+                          <span><%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class:"text-dark" %></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </tr>
+            </tbody>
+          </table>
