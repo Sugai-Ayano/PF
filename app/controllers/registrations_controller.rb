@@ -1,4 +1,4 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+# class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :check_guest, only: :destroy
 
   # def check_guest
@@ -7,4 +7,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   end
   # end
 
-end
+# end
