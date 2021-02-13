@@ -27,4 +27,10 @@ class Post < ApplicationRecord
       Post.where('title LIKE ?', '%'+content+'%')
     end
   end
+  
+  # 説明文省略
+  def short_description
+    description[0, 9] + '...'
+  end
+  
 end

@@ -1,33 +1,47 @@
-<h2>投稿詳細</h2>
+  <h2 class ="posts-show">投稿詳細</h2>
+  <div class="card-list-containar py-5">
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <%= attachment_image_tag @post, :image, :fill, 500, 300, format: 'jpeg' %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"mt-3 rounded-circle"; %>
+          </div>
+          <div class="col-10">
+            <p class="card-title">
+              投稿者：<%= link_to user_path(@post.user.id) do %>
+                <%= @post.user.name %>
+              <% end %>
+            <p>タイトル：<%= @post.title %></p>
+            <p><%= @genre_name %></p>
+            <p>説明：<%= @post.caption %></p>
+            </p>
 
-  <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
-
-  <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-  <%= link_to user_path(@post.user.id) do %>
-    <p><%= @post.user.name %></p>
-  <% end %>
-  <p><%= @post.title %></p>
-  <p><%= @genre_name %></p>
-  <p><%= @post.caption %></p>
-
-  <% if @post.user == current_user %>
-    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
-    <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
-  <% end %>
-
-    <!--いいね機能-->
-  <div class="favorite-btn">
-    <%= render 'favorites/favorite-btn', post: @post %>
-  </div>
-
-    <!--コメント機能-->
-  <div class="comments-count">コメント数: <%= @post.post_comments.count %>件
-  <div class="post_comments">
-    <%= render 'post_comments/index', post: @post %>
-    <%= form_with model:[@post,@post_comment] do |f| %>
-        <%= f.text_area :content, size:"90x5" %>
-        <%= f.submit '送信'%>
-    <% end %>
-  </div>
+            <% if @post.user == current_user %>
+              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+              <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
+            <% end %>
+              <!--いいね機能-->
+              <div class="favorite-btn">
+                <%= render 'favorites/favorite-btn', post: @post %>
+              </div>
+              <!--コメント機能-->
+              <div class="comments-count">コメント数: <%= @post.post_comments.count %>件
+                <div class="post_comments">
+                  <div class="col-10">
+                    <table class='table'>
+                      <%= render 'post_comments/index', post: @post, post_comment: @post_comment %>
+                    </table>
+                    <%= form_with model:[@post,@post_comment] do |f| %>
+                      <%= f.text_area :content, size:"60x5" %>
+                      <%= f.submit '送信'%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 

@@ -14,6 +14,7 @@ class PostCommentsController < ApplicationController
   def destroy
   # コメントをfindmしてdestroyを呼び出す
   # 削除したいコメントを呼び出す
+   @post_comment = Post_Comment.find(params[:post_comment_id])
    @post_comment = @post.post_comments.find(params[:id])
    @post_comment.destroy
   end
