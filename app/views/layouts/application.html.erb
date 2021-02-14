@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>いろどり</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
+  <html>
+    <head>
+      <title>Irodori</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
     <body>
-        <header>
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                   <%= render 'layouts/header' %>
-                    <main>
-                    </main>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </header>
-        <p id="notice"><%= notice %></p>
-        <%= yield %>
-    <%= render 'layouts/footer' %>
-  </body>
-</html>
+      <body>
+          <header>
+            <%= render 'layouts/header' %>
+              <!--<main>-->
+              <!--</main>-->
+          </header>
+          <p id="notice"><%= notice %></p>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+    </body>
+  </html>

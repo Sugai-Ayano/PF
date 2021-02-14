@@ -10,8 +10,8 @@
   	<td><%= post_comment.content %></td>
 
   <% if user_signed_in? && post_comment.user_id == current_user.id %>
+  <%# @users.each do |user| %>
    <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete,
    class: "btn btn-danger" ,data: { confirm: "削除してもいいですか？" }, remote: true %>
- <% end %>
-<% end %>
-
+  <% end %>
+  <% end %>
