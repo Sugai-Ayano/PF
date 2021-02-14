@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   has_many :genres
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   has_many :post_comments
   belongs_to :user
@@ -15,6 +15,7 @@ class Post < ApplicationRecord
     # その投稿にuser_idとpost_idが存在しているかを調べる
     favorites.where(user_id: user.id).exists?
   end
+
   # 検索機能
   def self.search_for(content, method)
     if method == 'perfect'
@@ -27,10 +28,10 @@ class Post < ApplicationRecord
       Post.where('title LIKE ?', '%'+content+'%')
     end
   end
-  
+
   # 説明文省略
   def short_description
     description[0, 9] + '...'
   end
-  
+
 end

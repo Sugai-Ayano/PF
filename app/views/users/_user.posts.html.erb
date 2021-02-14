@@ -15,10 +15,6 @@
                 <p class="post-text"><%= post.caption %></p>
                 <span>
                   </i>
-                  投稿者<%= post.user.name %> ｜
-                </span>
-                <span>
-                  <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"mt-3 rounded-circle"; %>
                   <%= link_to "コメント#{post.post_comments.count} 件", post_path(post.id), class:"text-dark" %>
               </div>
             </div>

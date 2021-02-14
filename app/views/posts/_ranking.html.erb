@@ -1,11 +1,12 @@
 <section class="ranking">
-    <h2 class="sidebar-heading common-heading">月間いいね投稿ランキング</h2>
+    <h2 class="sidebar-heading common-heading">いいね投稿ランキング</h2>
         <div class="sidebar-contents">
-          <%= all_ranks.each.with_index(1) do |post, i| %>
+          <% all_ranks.each.with_index(1) do |post, i | %>
             第
-            = i
+             <%= i %>
             位
-            = post.title
+            <%= post.title %>
+            <%= attachment_image_tag post, :image, class: "card-img-top" %>
           <% end %>
         </div>
   </section>

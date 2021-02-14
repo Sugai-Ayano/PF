@@ -1,0 +1,10 @@
+<% if @model == 'user' %>
+<h3>User search for"<%= @content %>"</h3>
+<!--部分テンプレートで使用されているusersにsearchコントローラで定義されている@recordsを使用している。
+@recordsは@content,@methodで検索した結果が入っている-->
+<%= render 'users/index', users: @records %>
+<!--モデルという変数の中身postだったら-->
+<% elsif @model == 'post' %>
+<h3>Post search for"<%= @content %>"</h3>
+<%= render 'posts/index', posts: @records %>
+<% end %>

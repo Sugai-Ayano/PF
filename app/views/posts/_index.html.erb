@@ -1,0 +1,24 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.each do |post| %>
+      <tr>
+        <td><%= link_to user_path(post) do %>
+          <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+          <% end %>
+        </td>
+        <td><%= link_to post.title, "/users/#{post.user_id}" %></td>
+        <td><%= post.title %></td>
+        <td><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

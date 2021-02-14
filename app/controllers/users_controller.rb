@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @current_user = current_user
-    @user = User.find(params[:id])
+    @user = User.find_by(params[:id])
     @posts = @user.posts
     @post = Post.new
     # ユーザーがいいねしている投稿一覧が欲しい

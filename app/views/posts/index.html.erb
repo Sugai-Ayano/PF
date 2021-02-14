@@ -1,12 +1,12 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-2'>
-        <%#= render "posts/ranking", all_ranks:@all_ranks %>
+        <%= render "posts/ranking", all_ranks:@all_ranks %>
       </div>
           <% if @posts == nil %>
           <div class='col-md-10'>
             <h2 class ="posts-index">みんなの投稿</h2>
-            <%= render 'searches/search' %>
+            <%= render 'searches/searches' %>
             <p>見たい投稿の季節を選んでください</p>
             <div class="nav_season">
               <%= link_to "春", posts_path(:season => "春"), class: "season" %>
