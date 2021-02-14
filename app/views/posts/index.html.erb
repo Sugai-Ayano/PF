@@ -1,9 +1,11 @@
   <div class='container'>
     <div class='row'>
-      <div class='col-md-2'>
-        <%= render "posts/ranking", all_ranks:@all_ranks %>
-      </div>
+
           <% if @posts == nil %>
+          <div class='col-md-2'>
+            <%= render "posts/ranking", all_ranks:@all_ranks %>
+          </div>
+
           <div class='col-md-10'>
             <h2 class ="posts-index">みんなの投稿</h2>
             <%= render 'searches/searches' %>

@@ -1,12 +1,14 @@
 <section class="ranking">
-    <h2 class="sidebar-heading common-heading">いいね投稿ランキング</h2>
+    <h5 class="sidebar-heading common-heading">いいね数<br>ランキング</h5>
         <div class="sidebar-contents">
           <% all_ranks.each.with_index(1) do |post, i | %>
             第
              <%= i %>
             位
             <%= post.title %>
-            <%= attachment_image_tag post, :image, class: "card-img-top" %>
+            <%= link_to post_path(post) do %>
+              <%= attachment_image_tag post, :image, class: "card-img-top" %>
+            <% end %>
           <% end %>
         </div>
   </section>
