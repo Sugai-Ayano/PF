@@ -29,7 +29,7 @@
               <div class="comments-count">コメント数: <%= @post.post_comments.count %>件
                 <div class="post_comments">
                   <div class="col-10">
-                    <table class='table'>
+                    <table class='table' id="post_comments">
                       <%= render 'post_comments/index', post: @post, post_comment: @post_comment %>
                     </table>
                     <%= form_with model:[@post,@post_comment] do |f| %>
@@ -44,4 +44,11 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
 

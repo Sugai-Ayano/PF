@@ -2,27 +2,57 @@
     <div class='row'>
       <div class="col-sm-12 col-md-5 col-lg-4 px-5 px-sm-0 mx-auto">
         <% if current_user == @user %>
-          <h4>マイページ</h4>
-          <%= attachment_image_tag @user, :profile_image, :fill, 200, 00, fallback: "no_image.jpg", size: "200x200", class:"mt-3 rounded-circle"; %>
-          <table class='table'>
-            <tr>
-              <th>名前：<%= @current_user.name %> </th>
-                </tr>
-            <tr>
-              <th>紹介文：　<% @current_user.introduction %></th>
-            </tr>
-            <tr>
-              <th>フォロー：<%= link_to @user.followings.count, user_followings_path(@user) %>人
-              </th>
-            </tr>
-            <tr>
-              <th>フォロワー：<%= link_to @user.followers.count, user_followers_path(@user) %>人
-              </th>
-            </tr>
-          </table>
-          <p><%= link_to "マイページを編集する", edit_user_path(@user) %>
-          <%= render "/users/follow", user:@user %>
-      </div>
+          <!--<h4>マイページ</h4>-->
+      <!--    <%#= attachment_image_tag @user, :profile_image, :fill, 200, 00, fallback: "no_image.jpg", size: "200x200", class:"mt-3 rounded-circle"; %>-->
+      <!--    <table class='table'>-->
+      <!--      <tr>-->
+      <!--        <th>名前：<%#= @current_user.name %> </th>-->
+      <!--          </tr>-->
+      <!--      <tr>-->
+      <!--        <th>紹介文：　<%# @current_user.introduction %></th>-->
+      <!--      </tr>-->
+      <!--      <tr>-->
+      <!--        <th>フォロー：<%#= link_to @user.followings.count, user_followings_path(@user) %>人-->
+      <!--        </th>-->
+      <!--      </tr>-->
+      <!--      <tr>-->
+      <!--        <th>フォロワー：<%#= link_to @user.followers.count, user_followers_path(@user) %>人-->
+      <!--        </th>-->
+      <!--      </tr>-->
+      <!--    </table>-->
+      <!--    <p><%#= link_to "マイページを編集する", edit_user_path(@user) %>-->
+      <!--    <%#= render "/users/follow", user:@user %>-->
+      <!--</div>-->
+
+        <h4>マイページ</h4>
+        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", class:"mt-3 rounded-circle"; %>
+         <table class='table'>
+                  <tr>
+                    <th>名前：<%= @current_user.name %> </th>
+                  </tr>
+                  <tr>
+                    <th>紹介文：　<% @current_user.introduction %></th>
+                  </tr>
+                  <tr>
+                    <th>
+                       フォロー：<%= link_to @user.followings.count, user_followings_path(@user) %>人
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      フォロワー：<%= link_to @user.followers.count, user_followers_path(@user) %>人
+                    </th>
+                  </tr>
+              </table>
+              <%= link_to "マイページを編集する", edit_user_path(@user) %>
+      <%= render "/users/follow", user:@user %>
+
+    <h2><%= @user.name %>さんの投稿</h2>
+    <%= render "/users/user.posts/", user:@user%>
+
+
+
+
 
         <h2><%= current_user.name %>さんの投稿</h2>
         <div class="card w-30 mx-auto mt-4 shadow-lg">

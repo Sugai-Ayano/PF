@@ -1,4 +1,36 @@
-<%= render 'searches/search' %>
+<!--<%#= render 'searches/search' %>-->
+<!--<table class='table'>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>image</th>-->
+<!--      <th>name</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <%# @users.each do |user| %>-->
+<!--      <tr>-->
+<!--        <td><%#= attachment_image_tag(user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg") %></td>-->
+<!--        <td><%#= user.name %></td>-->
+<!--        <td>フォロー数: <%#= user.followings.count %></td>-->
+<!--        <td>フォロワー数: <%#= user.followers.count %></td>-->
+<!--        <td>-->
+<!--           <%# if current_user != user %>-->
+<!--            <%# if current_user.followings?(user) %>-->
+<!--              <%#= link_to "フォローを外す", user_relationships_path(user.id), method: :delete %>-->
+<!--            <%# else %>-->
+<!--              <%#= link_to "フォローする", user_relationships_path(user.id), method: :post %>-->
+<!--            <%# end %>-->
+<!--          <%# end %>-->
+<!--        </td>-->
+<!--        <td><%#= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>-->
+<!--      </tr>-->
+<!--    <%# end %>-->
+<!--      </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+
 <table class='table'>
   <thead>
     <tr>
@@ -10,14 +42,14 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg") %></td>
+        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, size: "50x50", fallback: "no_image.jpg") %></td>
         <td><%= user.name %></td>
         <td>フォロー数: <%= user.followings.count %></td>
         <td>フォロワー数: <%= user.followers.count %></td>
         <td>
-           <% if current_user != user %>
+          <% if current_user != user %>
             <% if current_user.followings?(user) %>
-              <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete %>
+              <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete %>
             <% else %>
               <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
             <% end %>
@@ -26,6 +58,5 @@
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
       </tr>
     <% end %>
-      </tr>
   </tbody>
 </table>
