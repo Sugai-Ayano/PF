@@ -72,12 +72,12 @@ class User < ApplicationRecord
     end
 
   # ゲストログイン機能
-  # def self.guest
-  #   find_or_create_by!(email: '111@111') do |user|
-  #     user.password = SecureRandom.urlsafe_base64
-  #     # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-  #   end
-  # end
+  def self.guest
+    find_or_create_by!(email: '111@111') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
 
   # いいね機能
   def already_favorited?(post)
