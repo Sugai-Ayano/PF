@@ -1,12 +1,14 @@
 <%= flash[:error] %>
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>Log in</h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <div class="field">
+        <!--<div class="field">-->
+          <div class="form-group">
           <%= f.label :email %><br />
           <%= f.text_field :email, autofocus: true, class: "email" %>
+          <!--</div>-->
         </div>
         <div class="field">
           <%= f.label :password %><br />

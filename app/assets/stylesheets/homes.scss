@@ -19,3 +19,18 @@
   font-size: 20px;
   padding-top: 10px;
 }
+
+
+.about {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.about::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 70px;
+  margin: 8px auto 0 auto;
+  background-color: #EC715F;
+}

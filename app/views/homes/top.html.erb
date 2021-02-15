@@ -1,23 +1,21 @@
-<div class="top">
-        <div class="d-flex align-items-center justify-content-center ">
-          <div class="content">
-            <h1 class="top-title text-white">Welcome to Irodori's page</h1>
-            <p style="line-height:10rem">
-              <h3 class="sub-title text-white">当サイトは装飾やPOPの投稿・閲覧をお楽しみいただけます。<br>
-              初めての方はまずは上のアバウトページから、詳しい説明をご確認ください。<br>
+  <div class="top">
+    <div class="d-flex align-items-center justify-content-center ">
+      <div class="content">
+        <h1 class="top-title text-white">あなたが作った装飾を共有しませんか？</h1>
+          <p style="line-height:10rem">
+            <h3 class="sub-title text-white">当サイトは装飾やPOPの投稿・閲覧をお楽しみいただけます。<br>
+              初めての方は、まず上記の「サイト詳細」から、詳しい説明をご確認ください。<br>
               新規登録なしで、簡単ログインからもお進みいただけます。</h3>
-            </p>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="btn-wrapper col-6 mx-auto">
-        <!--<div class="row">-->
-          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-danger btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <!--<div class="row">-->
-          <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-        </div>
+          </p>
       </div>
     </div>
+    <p style="line-height:10rem">
+    <div class="row">
+      <div class="btn-wrapper col-6 mx-auto">
+        <%= link_to 'ログイン',new_user_session_path, class: "btn btn-danger btn-sm btn-block mb-3 sign_in" %>
+        <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        <%= link_to '簡単ログイン',new_user_registration_path, class: "btn btn-info btn-block btn-block sign_in" %>
+      </div>
+    </div>
+    </p>
   </div>
