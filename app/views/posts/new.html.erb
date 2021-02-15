@@ -1,18 +1,22 @@
-<h1>新規投稿</h1>
-<!-- form_with部分 -->
-<%= form_with model: @post, local:true, method: 'post' do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title, id: :post_title %>
-  <h4>ジャンル選択</h4>
-
-  <%#= f.select :genres, [["春", "春" ], ["夏", "夏" ], ["秋", "秋" ], ["冬", "冬" ], ["その他", "その他" ]], include_blank: "選択して下さい" %>
-  <%= f.select :genre_id, Post.genre_ids.keys, include_blank: "選択して下さい" %>
-
-  <h4>本文</h4>
-  <%= f.text_area :caption, id: :post_caption %>
-
-  <h4>画像</h4>
-  <!-- 追加部分 -->
-  <%= f.attachment_field :image, id: :image %><br>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h1>新規投稿</h1>
+    <!-- form_with部分 -->
+    <%= form_with model: @post, local:true, method: 'post' do |f| %>
+      <div class="form-group">
+      <h4>タイトル</h4>
+      <%= f.text_field :title, id: :post_title %>
+      
+      <div class="form-group">
+      <h4>ジャンル選択</h4>
+    
+      <%= f.select :genre_id, Post.genre_ids.keys, include_blank: "選択して下さい" %>
+    
+      <h4>本文</h4>
+      <%= f.text_area :caption, id: :post_caption %>
+    
+      <h4>画像</h4>
+      <!-- 追加部分 -->
+      <%= f.attachment_field :image, id: :image %><br>
+      <%= f.submit '投稿' %>
+    <% end %>

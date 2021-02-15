@@ -2,11 +2,11 @@
     <div class='row'>
 
           <% if @posts == nil %>
-          <div class='col-md-2'>
+          <!--<div class='col-md-2'>-->
             <%= render "posts/ranking", all_ranks:@all_ranks %>
           </div>
 
-          <div class='col-md-10'>
+          <div class='col-md-11 offset-1'>
             <h2 class ="posts-index">みんなの投稿</h2>
             <%= render 'searches/searches' %>
             <p>見たい投稿の季節を選んでください</p>

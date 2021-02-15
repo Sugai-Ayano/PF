@@ -1,39 +1,39 @@
-          <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-warning text-white">
             <div class="container">
              <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
                     <p class="p-3 text-info">ようこそ、<%= current_user.name %>さん</p>
                     <li class="nav-item">
-                      <%= link_to "みんなの投稿", posts_path, class: "fas fa-user nav-link text-teal m-3" %>
+                      <%= link_to "みんなの投稿", posts_path, class: "fas fa-camera nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
                       <%= link_to "マイページ", user_path(current_user.id), class: "fas fa-user nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "投稿する", new_post_path, class: "fas fa-user nav-link text-teal m-3" %>
+                      <%= link_to "投稿する", new_post_path, class: "far fa-plus-square nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "ユーザー一覧", users_path, class: "fas fa-user nav-link text-teal m-3" %>
+                      <%= link_to "ユーザー一覧", users_path, class: "fas fa-users nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "ログアウト", destroy_user_session_path,  method: :delete, class: "fas fa-user nav-link text-teal m-3" %>
+                      <%= link_to "ログアウト", destroy_user_session_path,  method: :delete, class: "fas fa-sign-out-alt nav-link text-teal m-3" %>
                     </li>
                   <% else %>
                     <li class="nav-item">
-                      <%= link_to "ホーム", root_path, class: "fas fa-link nav-link text-teal m-3" %>
+                      <%= link_to "ホーム", root_path, class: "fas fa-home nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
                       <%= link_to "アバウト", about_path, class: "fas fa-link nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "ログイン", new_user_session_path, class: "fas fa-link nav-link text-teal m-3" %>
+                      <%= link_to "ログイン", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "新規登録", new_user_registration_path, class: "fas fa-link nav-link text-teal m-3" %>
+                      <%= link_to "新規登録", new_user_registration_path, class: "fas fa-user-plus nav-link text-teal m-3" %>
                     </li>
                     <li class="nav-item">
-                      <%#= link_to "簡単ログイン", users_guest_sign_in_path, class: "fas fa-link nav-link text-teal m-3" %>
+                      <%#= link_to "簡単ログイン", users_guest_sign_in_path, class: "far fa-user nav-link text-teal m-3" %>
                     </li>
                   <% end %>
                 </ul>

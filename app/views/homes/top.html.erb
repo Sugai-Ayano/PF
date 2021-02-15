@@ -1,46 +1,21 @@
-  <div class="container">
-    <div class="row">
-      <div class="mx-auto col-10 col-sm-10 col-lg-10 col-xl-10 px-3">
-      </div>
-    </div>
-    <div class="row">
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="spring-top" class="d-block w-100" alt="picture">
-          </div>
-          <div class="carousel-item">
-            <img src="summer-top" class="d-block w-100" alt="picture">
-          </div>
-          <div class="carousel-item">
-            <img src="autumn-top" class="d-block w-100" alt="picture">
-          </div>
-          <div class="carousel-item">
-            <img src="winter-top" class="d-block w-100" alt="picture">
+<div class="top">
+        <div class="d-flex align-items-center justify-content-center ">
+          <div class="content">
+            <h1 class="top-title text-white">Welcome to Irodori's page</h1>
+            <p style="line-height:10rem">
+              <h3 class="sub-title text-white">当サイトは装飾やPOPの投稿・閲覧をお楽しみいただけます。<br>
+              初めての方はまずは上のアバウトページから、詳しい説明をご確認ください。<br>
+              新規登録なしで、簡単ログインからもお進みいただけます。</h3>
+            </p>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-          <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-          <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </a>
-    </div>
-
-      <div class="col-6 mt-auto">
-        <h3>装飾共有サイト・イロドリへようこそ！</h3>
-        <h6>当サイトは装飾やPOPの投稿・閲覧をお楽しみいただけます。<br>
-        初めての方はまずは上のアバウトページから、詳しい説明をご確認ください。</h6>
-      </div>
     </div>
     <div class="row">
       <div class="btn-wrapper col-6 mx-auto">
-        <div class="row">
+        <!--<div class="row">-->
           <%= link_to 'ログイン',new_user_session_path, class: "btn btn-danger btn-sm btn-block mb-3 sign_in" %>
         </div>
-        <div class="row">
+        <!--<div class="row">-->
           <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
         </div>
       </div>
