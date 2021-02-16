@@ -1,48 +1,49 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>Sign up</h2>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>新規会員登録</h2>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="field">
-          <%= f.label :name %><br />
+        <div class="form-group m-1">
+          <%= f.label :name, "お名前" %><br />
           <%= f.text_field :name, autofocus: true, class: "name" %>
         </div>
-        <div class="field">
-          <%= f.label :email %><br />
+        <div class="field m-1">
+          <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, class: "email" %>
         </div>
-        <div class="field">
-          <%= f.label :postal_code %><br />
+        <div class="field m-1">
+          <%= f.label :postal_code, "郵便番号" %><br />
           <%= f.text_field :postal_code %>
         </div>
-        <div class="field">
+        <div class="field m-1", "都道府県">
           <%= f.label :prefecture_code %><br />
           <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name %>
         </div>
-        <div class="field">
-          <%= f.label :city %><br />
+        <div class="field m-1">
+          <%= f.label :city, "市町村" %><br />
           <%= f.text_field :city %>
         </div>
-        <div class="field">
-          <%= f.label :street %><br />
+        <div class="field m-1">
+          <%= f.label :street, "番地" %><br />
           <%= f.text_field :street %>
         </div>
-        <div class="field">
-          <%= f.label :password %>
+        <div class="field m-1">
+          <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off", class: "password" %>
         </div>
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
+        <div class="field m-1">
+          <%= f.label :password_confirmation, "パスワード確認用" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm" %>
         </div>
-        <div class="actions">
-          <%= f.submit "Sign up" ,class: 'btn btn-sm btn-success' %>
+        <div class="actions m-1">
+          <%= f.submit "新規会員登録" ,class: 'btn btn-sm btn-success' %>
         </div>
       <% end %>
+      <h4 class="m-3">既に登録済みの方</h4>
       <%= render "devise/shared/links" %>
     </div>
   </div>

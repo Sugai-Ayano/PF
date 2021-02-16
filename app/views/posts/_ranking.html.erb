@@ -1,17 +1,23 @@
-<div class ="contaiver">
-<div class="row">
-    <h5>いいね数<br>ランキング</h5>
-        <div class ="col-md-4">
+  <div class ="container">
+    <div class="row">
+      <div class="col-3 mt-2 ml-5">
+        <h5>いいね数ランキング</h5>
+      </div>
+    </div>
+      <div class="row">
+        <!--<div class="col">-->
+        <!--<div>-->
           <% all_ranks.each.with_index(1) do |post, i | %>
-            第
-             <%= i %>
-            位<br>
-
+          <!--<div>-->
+            第<%= i %>位
             <%= link_to post_path(post) do %>
-              <%= attachment_image_tag post, :image, :fill, 100, 100, size: "100x100" %>
+          <!--</div>-->
+              <%= attachment_image_tag post, :image, :fill, 200, 150, size: "200x150" %>
+            <div class="top-item mt-1">
             <%= post.title %>
+            </div>
             <% end %>
           <% end %>
-        </div>
-  </div>
+        <!--</div>-->
+      </div>
   </div>

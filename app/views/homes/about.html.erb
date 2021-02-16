@@ -1,51 +1,54 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= image_tag "spring-top", class:"d-block w-100", alt:"image" %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "summer-top", class:"d-block w-100", alt:"image" %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "autumn-top", class:"d-block w-100", alt:"image" %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "winter-top", class:"d-block w-100", alt:"image" %>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-
-<div class='container'>
-    <div class='row'>
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <div class="form-group">
-              <h2 class="about">サイトについて</h2>
-              <p>・当サイト「彩（いろどり）」は、店舗装飾やPOP作成の共有をテーマにした投稿サイトです。<br>
-              ・「”春”をテーマに装飾設計したいけど、何を使ったら良いのか分からない」「装飾やPOPのアイデアが浮かばない」
-              「他の人の投稿を参考にもっと勉強したい」といった悩みに役立つ情報を提供します。<br>
-        </div>
-        <div class="form-group">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+    　　　<h1 class="text-center mx-auto font-weight-bold">About</h1>
+    　　  　<div class="about-text text-center mx-auto">
+    　　  　   <div class="form-group">
+    　　        <h2 class="about">サイトについて</h2>
+               <p>当サイト「彩（いろどり）」は、店舗装飾やPOP作成の共有をテーマにした投稿サイトです。<br>
+              「”春”をテーマに装飾設計したいけど、何を使ったら良いのか分からない」「装飾やPOPのアイデアが浮かばない」<br>
+              「他の人の投稿を参考にもっと勉強したい」といった悩みに役立つ情報を提供します。
+            </div>
+            <div class="form-group">
               <h2 class="about">みんなの投稿</h2>
-              <p>・ユーザー登録後、投稿の閲覧ができます。季節別の装飾の閲覧は勿論のこと、季節に属さないPOP等はその他で見ることができます。
+              <p>ユーザー登録後、投稿の閲覧ができます。季節別の装飾の閲覧や、季節に属さないPOP等は「その他」のリンクから見ることができます。<br>
               みんなの投稿ページでは、ユーザーや投稿タイトルで見たい投稿を探すことも可能です。
-        </div>
-        <div class="form-group">
+            </div>
+            <div class="form-group">
               <h2 class="about">マイページ</h2>
-              <p>・自分が投稿した装飾を一覧で確認することができます。また、いいねをした投稿の一覧を見ることができます。<br>
-              ・自分がフォローした一覧・フォローされているユーザーの一覧を確認することができます。</p>
-              <strong class="crayon">記事閲覧、投稿には簡単なユーザー登録が必要です。</strong></p>
-        </div>
+              <p>自分が投稿した装飾を一覧で確認することができます。また、いいねをした投稿の一覧を見ることができます。<br>
+              自分がフォローした一覧・フォローされているユーザーの一覧を確認することができます。</p>
+  　　　       </div>
+  　　　     </div>
       </div>
     </div>
   </div>
 
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <div class="carousel-item active">
+        <%= image_tag "spring-top", class:"d-block w-100", alt:"image" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "summer-top", class:"d-block w-100", alt:"image" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "autumn-top", class:"d-block w-100", alt:"image" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "winter-top", class:"d-block w-100", alt:"image" %>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <!-- ここにもCDNのView(public/test/index.html)を参考に。-->
