@@ -1,13 +1,14 @@
   <div class='container'>
     <div class='row'>
       <% if @posts == nil %>
-          <!--<div class='col-md-2'>-->
+      <!--<div class='col-md-2'>-->
       <%= render "posts/ranking", all_ranks:@all_ranks %>
     </div>
     <!--<div>-->
     <!--<div class='col-md-11 offset-1'>-->
+    <!--<div class="card-list-containar">-->
       <h2 class ="posts-index">みんなの投稿</h2>
-      <%= render 'searches/searches' %>
+      <div class="search"><%= render 'searches/searches' %></div>
       <%= render 'posts/season' %>
       <div class="card-list-containar py-5">
       <!--<div class="clearfix">-->
@@ -75,24 +76,3 @@
         <%#= paginate @posts %>
         <% end %>
   </div>
-
-
-
-
-
-
-<!--<table class='table'>-->
-<!--  <tr><%#= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>-->
-<!--  <tr>-->
-<!--	  <th>name</th>-->
-<!--	  <th><%#= user.name %></th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--	  <th>introduction</th>-->
-<!--	  <th><%#= user.introduction %></th>-->
-<!--  </tr>-->
-<!--</table>-->
-
-<!--<div class='row'>-->
-<!--  <%#= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>-->
-<!--</div>-->

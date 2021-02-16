@@ -23,7 +23,7 @@
         </table>
         <%= link_to "マイページを編集する", edit_user_path(@user) %>
         <%= render "/users/follow", user:@user %>
-        <div class='col-md-8 offset-md-1'>
+        <div class='col-md-10 offset-md-1'>
           <h2><%= current_user.name %>さんの投稿</h2>
           <%= render "/users/user.posts/", user:@user%>
         </div>
