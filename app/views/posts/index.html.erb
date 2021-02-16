@@ -5,17 +5,21 @@
       <%= render "posts/ranking", all_ranks:@all_ranks %>
     </div>
     <!--<div>-->
-    <!--<div class='col-md-11 offset-1'>-->
     <!--<div class="card-list-containar">-->
       <h2 class ="posts-index">みんなの投稿</h2>
-      <div class="search"><%= render 'searches/searches' %></div>
-      <%= render 'posts/season' %>
-      <div class="card-list-containar py-5">
-      <!--<div class="clearfix">-->
-        <% @post_all.each do |post| %>
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="row">
+        <%= render 'searches/searches' %>
+      </div>
+      <div class="row">
+        <%= render 'posts/season' %>
+      </div>
+      <div class="row">
+        <!--<div class="col-4">-->
+          <!--<div class="card-list-containar py-5">-->
+            <% @post_all.each do |post| %>
+            <div class="card mx-auto mt-4 shadow-lg">
             <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image,class: "card-img-top" %>
+              <%= attachment_image_tag post, :image, class: "card-img-top" %>
             <% end %>
             <div class="card-body">
               <div class="row">
@@ -40,6 +44,7 @@
             </div>
           </div>
         <% end %>
+      </div>
         <%= paginate @post_all %>
       </div>
         <% else %>
