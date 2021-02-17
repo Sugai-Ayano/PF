@@ -1,1 +1,1 @@
-$('#season').html("<%= escape_javascript(render 'index') %>");
+$('#season').html("<%= escape_javascript(render 'posts/season.content', genre_name: @genre_name, posts: @posts) %>");
