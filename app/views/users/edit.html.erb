@@ -5,15 +5,15 @@
     <%= form_with model:@user, local:true do |f| %>
       <%#= render 'layouts/errors', obj: @post %>
       <div class="form-group">
-        <%= f.label :name %>
+        <%= f.label :name, "名前" %>
         <%= f.text_field :name, class: "form-control name" %>
       </div>
      <div class="form-group">
-        <%= f.label :profile_image %>
+        <%= f.label :profile_image, "プロフィール画像" %>
         <%= f.attachment_field :profile_image, class: "form-control-file profile_image" %>
       </div>
       <div class="form-group">
-        <%= f.label :introduction %>
+        <%= f.label :introduction, "紹介文" %>
         <%= f.text_area :introduction, class: "form-control introduction" %>
       </div>
       <div class="form-group">
