@@ -1,16 +1,40 @@
-<table class='table'>
+<!--<table class='table'>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>image</th>-->
+<!--      <th>name</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <%# users.each do |user| %>-->
+<!--      <tr>-->
+<!--        <td><%#= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>-->
+<!--        <td><%#= user.name %></td>-->
+<!--      </tr>-->
+<!--    <%# end %>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th>ユーザー名</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-        <td><%= user.name %></td>
+        <td><%= link_to user_path(user) do %>
+          <%= attachment_image_tag(user, :profile_image, :fill, 50, 50, size: "50x50", fallback: "no_image.jpg") %>
+          <% end %>
+        </td>
+        <td></td>
+        <th><%= user.name %></th>
+        <th></th>
       </tr>
     <% end %>
   </tbody>
