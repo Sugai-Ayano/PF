@@ -1,52 +1,48 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.posts-show {
-    text-align :center;
-}
 
 .posts-index {
-    text-align :center;
+    text-align: center;
 }
 
 .nav_season {
-    text-align :center;
+    text-align: center;
 }
 
-// .card-list-containar {
-//     width: 90%;
-//     background-size: cover;
-//     background-position: center;
-//     float: left;
-//     margin: 10px 10px 0 0;
-// }
+.ranking {
+    margin: 30px;
+}
 
-
-// .card-list-containar:nth-child(-n+3) {
-//   margin-top: 0;
-// }
-
-// .card-list-containar:nth-child(3n) {
-//   margin-right: 0;
-// }
+.posts-index {
+    margin-top: 60px;
+}
 
 .season-title {
-    text-align :center;
+    text-align: center;
 }
 
-// .search {
-//     margin :right;
-// }
+ .search {
+     margin: 0 0 0 auto;
+}
 
 .title {
-    text-align :center;
+    text-align: center;
 }
 
 .ranking-container {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
 }
 
-// .card-img-top
+.season {
+    width:700px;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.card-img-top{
+    height: 200px;
+    width: 200px;
+}
