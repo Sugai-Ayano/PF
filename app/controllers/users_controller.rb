@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.where(is_deleted: false)
   end
 
   def show
     @current_user = current_user
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
     @posts = @user.posts
     @post = Post.new
     # ユーザーがいいねしている投稿一覧が欲しい
