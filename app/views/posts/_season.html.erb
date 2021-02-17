@@ -1,10 +1,10 @@
-  <div class="nav_season">
+  <div class="season-title">
     <p>見たい投稿の季節を選んでください</p>
+    <div class="nav_season">
       <%= link_to "春", posts_path(:season => "春"), class: "season" %>
       <%= link_to "夏", posts_path(:season => "夏"), class: "season" %>
       <%= link_to "秋", posts_path(:season => "秋"), class: "season" %>
       <%= link_to "冬", posts_path(:season => "冬"), class: "season" %>
       <%= link_to "その他", posts_path(:season => "その他"), class: "season" %>
+    </div>
   </div>
-
-

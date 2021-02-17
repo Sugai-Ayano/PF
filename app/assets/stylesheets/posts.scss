@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.posts-show {
+    text-align: center;
+    margin-top: 30px;
+}
+
 .posts-index {
     text-align: center;
 }
@@ -18,12 +23,9 @@
     margin-top: 60px;
 }
 
-.season-title {
-    text-align: center;
-}
 
- .search {
-     margin: 0 0 0 auto;
+.search {
+    margin: 0 0 0 auto;
 }
 
 .title {
@@ -40,9 +42,53 @@
     width:700px;
     margin-right: auto;
     margin-left : auto;
+    padding: 20px;
+    font-size: 20px;
 }
+
+
+.season-title {
+    text-align: center;
+}
+
 
 .card-img-top{
     height: 200px;
     width: 200px;
 }
+
+.new {
+    margin-top: 20px;
+}
+
+
+.card-title{
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+
+}
+
+.card-title:hover{
+  background-position: -100% 0;
+  color: #fff;
+}
+
+
+.img_wrap{
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img_wrap img{
+  transition-duration: 0.5s;
+}
+
+.img_wrap:hover img{
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+
+

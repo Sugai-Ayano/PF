@@ -1,22 +1,25 @@
+<div class = "container">
 <div class='row'>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h1>新規投稿</h1>
     <!-- form_with部分 -->
     <%= form_with model: @post, local:true, method: 'post' do |f| %>
       <div class="form-group">
-      <h4>タイトル</h4>
+      <div class="new">タイトル</div>
       <%= f.text_field :title, id: :post_title %>
-      
+
       <div class="form-group">
-      <h4>ジャンル選択</h4>
-    
+      <div class="new">ジャンル選択</div>
+
       <%= f.select :genre_id, Post.genre_ids.keys, include_blank: "選択して下さい" %>
-    
-      <h4>本文</h4>
+
+      <div class="new">本文</div>
       <%= f.text_area :caption, id: :post_caption %>
-    
-      <h4>画像</h4>
+
+      <div class="new">画像</div>
       <!-- 追加部分 -->
-      <%= f.attachment_field :image, id: :image %><br>
+      <%= f.attachment_field :image, id: :image %>
+      <div class="new">
       <%= f.submit '投稿' %>
+      </div>
     <% end %>
