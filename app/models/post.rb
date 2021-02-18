@@ -33,7 +33,4 @@ class Post < ApplicationRecord
   def short_description
     description[0, 9] + '...'
   end
-
-  # 画像リサイズ
-  # process resize_to_limit: [300, 200, "#ffffff", "Center"]
 end

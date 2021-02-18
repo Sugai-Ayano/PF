@@ -17,7 +17,7 @@
         <div class="card mx-auto mt-4 shadow-lg">
           <div class="img_wrap">
             <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image,class: "card-img-top" %>
+              <%= attachment_image_tag post, :image, class: "card-img-top" %>
           <% end %>
         </div>
       <div class="card-body">
@@ -44,8 +44,8 @@
       </div>
       </div>
     <% end %>
+    </div>
     <div class="pagenation">
       <%= paginate posts %>
-    </div>
     </div>
   </div>
