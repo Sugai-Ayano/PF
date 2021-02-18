@@ -29,9 +29,9 @@
               <% end %>
             </p>
             <p class="post-text">ジャンル：<%= post.genre_id %></p>
-            <p class="card-text">説明文：<%= post.caption %></p>
-              <%#= post.description.truncate(10) %>
-                <%#= link_to "続き", post_path(post) %>
+            <p class="card-text">説明文：<%= post.caption.truncate(10) %></p>
+                <%= link_to "続き", post_path(post) %>
+
             <div class="row">
               <div class="col-4"><%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"mt-3 rounded-circle"; %></div>
               <div class="col-8">
