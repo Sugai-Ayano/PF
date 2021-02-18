@@ -6,5 +6,5 @@
 <!--モデルという変数の中身postだったら-->
 <% elsif @model == 'post' %>
 <h3>Post search for"<%= @content %>"</h3>
-<%= render 'posts/index', posts: @records %>
+<%= render 'posts/index', posts: @records, user: @user %>
 <% end %>

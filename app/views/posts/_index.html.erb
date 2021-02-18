@@ -10,7 +10,7 @@
   <tbody>
     <% posts.each do |post| %>
       <tr>
-        <td><%= link_to user_path(post) do %>
+        <td><%= link_to user_path(user) do %>
           <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, size: "50x50", fallback: "no_image.jpg") %>
           <% end %>
         </td>

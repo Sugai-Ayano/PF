@@ -3,7 +3,11 @@
              <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
+                  <!--  <%# if user.name = '111111' %>-->
+                  <!--  <p class="p-3 text-info">ようこそ、ゲストユーザーさん</p>-->
+                  <!--<%# else%>-->
                     <p class="p-3 text-info">ようこそ、<%= current_user.name %>さん</p>
+                  <!--<%# end %>-->
                     <li class="nav-item">
                       <%= link_to "みんなの投稿", posts_path, class: "fas fa-camera nav-link text-teal m-3" %>
                     </li>

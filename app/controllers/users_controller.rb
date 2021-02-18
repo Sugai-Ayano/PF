@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @current_user = current_user
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @posts = @user.posts
     @post = Post.new
     # ユーザーがいいねしている投稿一覧が欲しい
@@ -20,7 +19,9 @@ class UsersController < ApplicationController
 
 
   def update
-    if user.update(user_params)
+    byebug
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       redirect_to user_path(@user),notice:"You have updated user successfully."
     else
       render "edit"

@@ -1,6 +1,8 @@
   <h2 class ="posts-show">投稿詳細</h2>
   <div class="card-list-containar">
     <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <!--画像リサイズ-->
+      <%#= image_tag(@post.image.to_s) %>
       <%= attachment_image_tag @post, :image, :fill, 500, 300, format: 'jpeg' %>
       <div class="card-body">
         <div class="row">
