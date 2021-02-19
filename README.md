@@ -22,7 +22,7 @@
 # チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1u4GrLRe7WRA_SGN-4dOlug_2yL72u50B0snxCUJh3D8/edit#gid=0
 
-#設計書
+# 設計書
 ワイヤーフレーム：https://docs.google.com/presentation/d/1Fl4jUEu56ugSmGldzqbcca1-oKUQpJ6XnfkV2wSW290/edit?usp=sharing
 UI Flow: https://drive.google.com/file/d/1P0lQn1KqUfSlE489Cpup5Vp5ZPbmeKwz/view?usp=sharing
 ER図: https://drive.google.com/file/d/1ZVtNiMnpWnEHyq_ShxTD9qxWbksaPa6g/view?usp=sharing
