@@ -7,24 +7,29 @@
           <div class="col-2">
             <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class:"mt-3 rounded-circle"; %>
           </div>
-          <div class="col-10">
-            <p class="card-title">
-              投稿者：<%= link_to user_path(@post.user.id) do %>
-                <%= @post.user.name %>
-              <% end %>
-            <p>タイトル：<%= @post.title %></p>
-            <p><%= @genre_name %></p>
-            <p>内容：<%= @post.caption %></p>
-            </p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-10">
+              <p class="card-title">
+                投稿者：<%= link_to user_path(@post.user.id) do %>
+                  <%= @post.user.name %>
+                <% end %>
+              </p>
+              <p>タイトル：<%= @post.title %></p>
+              <p><%= @genre_name %></p>
+              <p>内容：<%= @post.caption %></p>
 
             <% if @post.user == current_user %>
               <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
               <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
             <% end %>
+
               <!--いいね機能-->
               <div class="favorite-btn">
                 <%= render 'favorites/favorite-btn', post: @post %>
               </div>
+
               <!--コメント機能-->
               <div class="comments-count">コメント数: <%= @post.post_comments.count %>件
                 <div class="post_comments">
@@ -40,6 +45,7 @@
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
