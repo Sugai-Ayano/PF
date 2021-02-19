@@ -3,10 +3,12 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update, :destroy]
 
   def index
+    # おすすめ機能
+    @recommendations = Recommendation.all
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+
     if params[:season] == nil
       @posts = Post.page(params[:page]).per(9)
-      # いいね順に上位３つの投稿を表示
     else
       @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(9)
       @genre_name = params[:season]
