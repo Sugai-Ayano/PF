@@ -1,4 +1,4 @@
-  <% if genre_name.nil? %>
+   <% if genre_name.nil? %>
     <h2 class ="posts-index">みんなの投稿</h2>
   <% else %>
     <h2 class="posts-index"><%= genre_name %>の投稿</h2>
@@ -25,11 +25,11 @@
           <div class="col-10">
             <p class="card-title">
               <%= link_to(post_path(post.id), class:"text-dark") do %>
-                タイトル：<%= post.title %>
+                タイトル：<%= post.title.truncate(10) %>
               <% end %>
             </p>
             <p class="post-text">ジャンル：<%= post.genre_id %></p>
-            <p class="card-text">説明文：<%= post.caption.truncate(10) %></p>
+            <p class="card-text">内容：<%= post.caption.truncate(10) %></p>
                 <%= link_to "続き", post_path(post) %>
 
             <div class="row">

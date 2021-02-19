@@ -1,11 +1,27 @@
-<h2>Followed Users</h2>
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-    <%= user.name  %>
-    <%= attachment_image_tag user, :profile_image  %>
-    <%= render "/users/follow", user:user %>
-  <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
-<%= link_to "戻る", user_path(@user.id) %>
+<h2 class="follow">フォローしているユーザー</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>ユーザー画像<th>
+        <th>名前</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if @users.exists? %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, size: "50x50", fallback: "no_image.jpg") %></td>
+          <td><%= user.name  %></td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+          <td><%= link_to '投稿を見る', user_path(user), class: "user_#{user.id}" %></td>
+          <td><%= render "/users/follow", user:user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+    <%= link_to "ユーザー情報へ戻る", user_path(@user.id), class: "return" %>
+      <% else %>
+    <p>ユーザーはいません</p>
+    <% end %>

@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @post = Post.new
+    # byebug
+    # @post_page = Post.page(params[:page]).per(6)
     # ユーザーがいいねしている投稿一覧が欲しい
     @favorited_posts = @user.favorited_posts
   end

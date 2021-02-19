@@ -1,11 +1,11 @@
 
-  <div class='container px-5 px-sm-0'>
+  <div class='container show'>
     <div class='row'>
       <div class='col-md-3'>
       <% if current_user == @user %>
-        <h1>マイページ</h1>
+        <h2>マイページ</h2>
       <% else %>
-        <h1><%= @user.name %>さんの<br>ページ</h1>
+        <h2>ユーザー情報</h2>
       <% end %>
         <table class='table'>
           <tr><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", class:"mt-3 rounded-circle"; %>
@@ -20,7 +20,7 @@
             <th>フォロワー：<%= link_to @user.followers.count, user_followers_path(@user) %>人</th>
           </tr>
           <tr>
-            <th>紹介文：　<%= @user.introduction %></th>
+            <th>紹介文：　<% @user.introduction %></th>
           </tr>
         </table>
         <% if current_user == @user %>
@@ -29,7 +29,7 @@
           <%= render "/users/follow", user:@user %>
 
           <div class='col-md-8 offset-md-1'>
-            <h2><%= @user.name %>さんの投稿</h2>
+            <h1><%= @user.name %>さんの投稿</h1>
               <%= render "/users/user.posts/", user:@user%>
           </div>
         <% else%>
@@ -38,12 +38,12 @@
 
           <div class='col-md-8 offset-md-1'>
             <h2><%= @user.name %>さんの投稿</h2>
-              <%= render "/users/user.posts/", user:@user%>
+              <%= render "/users/user.posts/", user: @user %>
+              <!--, post_page: @post_page-->
           </div>
         <% end %>
     </div>
   </div>
-  <%#= paginate @post %>
 
 
 

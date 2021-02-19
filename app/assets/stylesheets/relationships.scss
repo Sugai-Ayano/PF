@@ -1,3 +1,22 @@
 // Place all the styles related to the relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follow {
+  margin-top: 50px;
+}
+
+.return {
+  margin-top: 50px;
+  margin-left: 50px;
+  padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+}
+
+.return:hover{
+  background-position: -100% 0;
+  color: #fff;
+}

@@ -11,10 +11,10 @@
                 <div class="col-10">
                   <p class="card-title">
                     <%= link_to(post_path(post.id), class:"text-dark") do %>
-                      タイトル：<%= post.title %>
+                      タイトル：<%= post.title.truncate(5) %>
                     <% end %>
                   </p>
-                  <p class="post-text">説明文：<%= post.caption %></p>
+                  <p class="post-text">内容：<%= post.caption.truncate(5) %></p>
                   <p><%= link_to "コメント#{post.post_comments.count} 件", post_path(post.id), class:"text-dark" %></p>
                 </div>
               </div>
@@ -22,5 +22,8 @@
           </div>
         <% end %>
       </div>
+      <!--<div class="pagenation">-->
+        <%#= paginate post_page %>
+      <!--</div>-->
     </div>
   </div>

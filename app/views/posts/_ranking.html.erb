@@ -14,7 +14,7 @@
             <%= attachment_image_tag post, :image, :fill, 200, 150, size: "200x150" %>
           <% end %>
           <div class="top-item mt-1">
-            <%= post.title %>
+            <%= post.title.truncate(10) %>
           </div>
         </div>
       <% end %>
