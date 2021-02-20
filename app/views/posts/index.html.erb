@@ -1,6 +1,6 @@
   <div class='container'>
     <div class='row'>
-      <div class="ranking">
+      <div class="ranking">投稿の詳細は画像をクリック!
         <%= render "posts/ranking", all_ranks: @all_ranks %>
       </div>
     <div class="recommendation">
@@ -13,5 +13,8 @@
     </div>
     <div id='season'>
       <%= render 'posts/season.content', genre_name: @genre_name, posts: @posts %>
+    </div>
+    <div class="pagenation">
+      <%= paginate @posts %>
     </div>
   </div>

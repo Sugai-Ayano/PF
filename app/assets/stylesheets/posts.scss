@@ -60,9 +60,9 @@
 
 
 .image-top {
-    height:  auto;
-    width: 100%;
-    // object-fit: covers;
+    height:  50%;
+    width: auto;
+    object-fit: covers;
     // width: auto;
     // height: auto;
     // max-width: 100%;
@@ -104,7 +104,7 @@
 }
 
 .recommendation {
-    margin-top: 30px;
+    margin-top: 60px;
     margin-left: 30px;
 }
 
@@ -114,5 +114,24 @@
 }
 
 .recommendation-image {
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a.page-link {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  padding: 0.5rem 0.8rem;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a.page-link {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 30px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
 }

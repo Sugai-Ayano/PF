@@ -1,7 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 
   before_action :reject_user, only: [:create]
-  ゲストログイン機能
+  # ゲストログイン機能
   def new_guest
     user = User.guest
     sign_in user

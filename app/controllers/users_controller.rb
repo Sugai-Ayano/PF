@@ -8,10 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(6)
     @post = Post.new
-    # byebug
-    # @post_page = Post.page(params[:page]).per(6)
     # ユーザーがいいねしている投稿一覧が欲しい
     @favorited_posts = @user.favorited_posts
   end
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
 
 
   def update
-    byebug
+    # byebug
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user),notice:"You have updated user successfully."

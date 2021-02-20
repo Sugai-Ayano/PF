@@ -3,15 +3,14 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update, :destroy]
 
   def index
-    # byebug
     # おすすめ機能
     @recommendations = Recommendation.all
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
 
     if params[:season] == nil
-      @posts = Post.page(params[:page]).per(9)
+      @posts = Post.page(params[:page]).per(6)
     else
-      @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(9)
+      @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(6)
       @genre_name = params[:season]
     end
       @post = Post.new
