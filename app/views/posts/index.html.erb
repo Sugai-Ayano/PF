@@ -3,10 +3,11 @@
       <div class="ranking">
         <%= render "posts/ranking", all_ranks: @all_ranks %>
       </div>
-      <p>おすすめの投稿</p>
+    <div class="recommendation">
+      <p class="recommendation-post">おすすめの投稿</p>
         <% @recommendations.each do |recommendation| %>
           <%= link_to post_path(recommendation.post) do %>
-              <%= recommendation.attachment_image_tag post, :image, :fill, 200, 150, size: "200x150" %>
+              <%= attachment_image_tag recommendation.post, :image, :fill, 200, 150, size: "200x150", class: "recommendation-image" %>
           <% end %>
         <% end %>
     </div>

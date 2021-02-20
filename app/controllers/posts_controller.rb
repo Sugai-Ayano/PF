@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit, :update, :destroy]
 
   def index
+    # byebug
     # おすすめ機能
     @recommendations = Recommendation.all
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
