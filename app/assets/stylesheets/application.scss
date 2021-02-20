@@ -17,6 +17,20 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-// .nav-link {
-//   color: #fff;
-// }
+.nav-link {
+  color: #fff !important;
+}
+
+.title-logo {
+  font-family:'Fredoka One', sans-serif;
+  text-transform:uppercase;
+  color:#FF0000;
+  margin-right: auto;
+}
+
+.title-logo-2 {
+  font-family:'Fredoka One', sans-serif;
+  text-transform:uppercase;
+  color:#008000;
+  margin-right: auto;
+}

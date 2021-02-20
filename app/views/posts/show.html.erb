@@ -16,6 +16,7 @@
                   <%= @post.user.name %>
                 <% end %>
               </p>
+              <p>投稿日：<%= @post.created_at.strftime("%Y-%m-%d") %></p>
               <p>タイトル：<%= @post.title %></p>
               <p><%= @genre_name %></p>
               <p>内容：<%= @post.caption %></p>

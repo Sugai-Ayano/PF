@@ -8,9 +8,9 @@ class PostsController < ApplicationController
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
 
     if params[:season] == nil
-      @posts = Post.page(params[:page]).per(6)
+      @posts = Post.page(params[:page]).per(6).order(created_at: :desc)
     else
-      @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(6)
+      @posts = Post.where(genre_id: Post.genre_ids[params[:season]]).page(params[:page]).per(6).order(created_at: :desc)
       @genre_name = params[:season]
     end
       @post = Post.new

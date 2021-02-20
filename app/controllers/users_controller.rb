@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.page(params[:page]).per(6).order(created_at: :desc)
     @post = Post.new
     # ユーザーがいいねしている投稿一覧が欲しい
     @favorited_posts = @user.favorited_posts

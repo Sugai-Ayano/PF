@@ -23,7 +23,6 @@
 
 .about {
   text-align: center;
-  padding-top: 50px;
 }
 
 .about::after {
@@ -34,3 +33,19 @@
   margin: 8px auto 0 auto;
   background-color: #EC715F;
 }
+
+#carouselExampleControls {
+    width: 700px;
+    height: 500px;
+    margin:  0 auto;
+    margin-top: 50px;
+}
+
+.about {
+  text-align: center;
+}
+
+.introduce {
+  margin-bottom: 50px;
+}
+
