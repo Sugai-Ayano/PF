@@ -38,13 +38,13 @@
 
           <div class='col-md-8 offset-md-1'>
             <h2><%= @user.name %>さんの投稿</h2>
-            <!--@post_page:<%#= @post_page.pluck('id') %>-->
               <%= render "/users/user.posts/", user: @user %>
             <div class="pagenation">
               <%= paginate @posts %>
             </div>
           </div>
         <% end %>
+      </div>
     </div>
   </div>
 

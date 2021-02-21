@@ -7,11 +7,6 @@ class User < ApplicationRecord
   include JpPrefecture
   jp_prefecture :prefecture_code
 
-  # devise_for :users を次に置き換える
-  # devise_for :users, controllers: {
-  #   registrations: 'users/registrations'
-  # }
-
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :post_commnets
@@ -54,22 +49,22 @@ class User < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
-    def self.search_for(content, method)
-     # methodがperfectだったら
-      if method == 'perfect'
-        # データベースから条件に一致したものを一件or複数とってくる
-        User.where(name: content)
-        # perfctじゃなかったらforword（前方一致）に移動する
-      elsif method == 'forward'
-        User.where('name LIKE ?', content + '%')
-        # perfctじゃなかったらforword（後方一致）に移動する
-      elsif method == 'backward'
-        User.where('name LIKE ?', '%' + content)
-      else
-        # 全く一致しない場合
-        User.where('name LIKE ?', '%' + content + '%')
-      end
+  def self.search_for(content, method)
+      # methodがperfectだったら
+    if method == 'perfect'
+      # データベースから条件に一致したものを一件or複数とってくる
+      User.where(name: content)
+      # perfctじゃなかったらforword（前方一致）に移動する
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+      # perfctじゃなかったらforword（後方一致）に移動する
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      # 全く一致しない場合
+      User.where('name LIKE ?', '%' + content + '%')
     end
+  end
 
   # ゲストログイン機能
   def self.guest

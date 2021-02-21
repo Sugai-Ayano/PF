@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user),notice:"You have updated user successfully."
+      redirect_to user_path(@user),notice:"アップデートに成功しました。"
     else
       render "edit"
     end
@@ -33,12 +33,17 @@ class UsersController < ApplicationController
 
   def hide
     @user = User.find(params[:id])
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
-    @user.update(is_deleted: true)
-    #ログアウトさせる
-    reset_session
-    flash[:notice] = "退会処理が完了しました。"
-    redirect_to root_path
+    if @user.email =='guest@example.com'
+      # for guest_user
+      flash[:notice] = "ゲストは退会できません。"
+      redirect_to confirm_user_path
+    else
+       #is_deletedカラムにフラグを立てる(defaultはfalse)
+      @user.update(is_deleted: true)
+      #ログアウトさせる
+      reset_session
+      redirect_to root_path
+    end
   end
 
   def zipedit
@@ -48,7 +53,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
-  end
+  end 
 
   def ensure_correct_user
     @user = User.find(params[:id])

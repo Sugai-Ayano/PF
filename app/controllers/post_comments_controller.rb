@@ -1,5 +1,6 @@
 class PostCommentsController < ApplicationController
   before_action :authenticate_user!
+
   def create
     # 検索時
     @post = Post.find(params[:post_id])
@@ -12,11 +13,11 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-  # コメントをfindしてdestroyを呼び出す
-  # 削除したいコメントを呼び出す
-  @post = Post.find(params[:post_id])
-  @post_comment = PostComment.find(params[:id])
-  @post_comment.destroy
+    # コメントをfindしてdestroyを呼び出す
+    # 削除したいコメントを呼び出す
+    @post = Post.find(params[:post_id])
+    @post_comment = PostComment.find(params[:id])
+    @post_comment.destroy
   end
 
   private

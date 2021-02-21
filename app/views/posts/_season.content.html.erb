@@ -1,8 +1,9 @@
-   <% if genre_name.nil? %>
+  <% if genre_name.nil? %>
     <h2 class ="posts-index">みんなの投稿</h2>
   <% else %>
     <h2 class="posts-index"><%= genre_name %>の投稿</h2>
   <% end %>
+  
   <div class="row">
     <div class="search"><%= render 'searches/searches' %></div>
   </div>

@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   private
   def after_sign_in_path_for(resource)
     if current_user
-      flash[:notice] = "ログインに成功しました"
+       unless action_name ==  "confirm"
+         flash[:notice] = "ログインに成功しました"
+       end
     posts_path
     else
       flash[:notice] = "新規登録完了しました。"
@@ -16,12 +18,13 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  # def check_guest
-  #   email = resource&.email || params[:user][:email].downcase
-  #   if email == '111@111'
-  #     redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
-  #   end
-  # end
+  # ゲストログイン機能
+  def check_guest
+    email = resource&.email || params[:user][:email].downcase
+    if email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+    end
+  end
 
   protected
 

@@ -30,11 +30,5 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
 
-  resources :genres, only: [:index] do
-    member do
-      post 'season' => 'genres#season'
-    end
-  end
-
 end
 
