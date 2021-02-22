@@ -30,7 +30,10 @@
 
           <div class='col-md-8 offset-md-1'>
             <h1><%= @user.name %>さんの投稿</h1>
-              <%= render "/users/user.posts/", user:@user%>
+              <%= render "/users/user.posts/", user: @user%>
+              <div class="pagenation">
+                <%= paginate @posts %>
+              </div>
           </div>
         <% else%>
             <%= render "/users/follow", user:@user %>

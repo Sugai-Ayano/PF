@@ -20,7 +20,6 @@ class User < ApplicationRecord
   validates :postal_code, presence: true
   validates :prefecture_code, presence: true
   validates :city, presence: true
-  validates :street, presence: true
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
