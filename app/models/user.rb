@@ -15,8 +15,8 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :email, presence: true
-  validates :encrypted_password, presence: true, length: {minimum:6}
-  validates :introduction, length: { maximum: 50 }
+  validates :password, presence: true, length: {minimum:6}, on: :create
+  validates :introduction, presence: true, length: { maximum: 50 }
   validates :postal_code, presence: true
   validates :prefecture_code, presence: true
   validates :city, presence: true
