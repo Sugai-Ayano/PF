@@ -31,7 +31,7 @@
               <%= link_to "ログイン", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-teal m-3" %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: "fas fa-user-plus nav-link text-teal m-3" %>
+              <%= link_to "新規登録", new_user_registration_path, class: "fas fa-user-plus nav-link text-teal m-3", data: {"turbolinks" => false} %>
             </li>
             <li class="nav-item">
               <%= link_to "簡単ログイン", homes_guest_sign_in_path, class: "far fa-user nav-link text-teal m-3" %>
