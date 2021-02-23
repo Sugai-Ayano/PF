@@ -4,6 +4,15 @@ ja:
       models:
         user:
           attributes:
+            name:
+              blank: "が入力されていません。"
+              too_short: "が短すぎる"
+            introduction:
+              blank: "が入力されていません。"
+            postal_code:
+              blank: "が入力されていません。"
+            city:
+              blank: "が入力されていません。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
@@ -20,11 +29,14 @@ ja:
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: 名前
+        name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+        introduction: "紹介文"
+        city: "市町村"
+        postal_code: "郵便番号"
     models:
       user: "ユーザ"
   devise:
