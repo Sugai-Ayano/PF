@@ -20,7 +20,7 @@
             <th>フォロワー：<%= link_to @user.followers.count, user_followers_path(@user) %>人</th>
           </tr>
           <tr>
-            <th>紹介文：　<% @user.introduction %></th>
+            <th>紹介文：<br>　<%= @user.introduction %></th>
           </tr>
         </table>
         <% if current_user == @user %>
