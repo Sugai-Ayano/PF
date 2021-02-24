@@ -6,7 +6,7 @@ ja:
           attributes:
             name:
               blank: "が入力されていません。"
-              too_short: "が短すぎる"
+              too_short: "が短すぎます"
             introduction:
               blank: "が入力されていません。"
             postal_code:
@@ -95,3 +95,12 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+
+      # post:
+      #   new:
+      #     title:
+      #     blank: "が入力されていません。"
+      #     image:
+      #     blank: "が選択されていません。"
+      #     caption:
+      #     blank: "が入力されていません。"

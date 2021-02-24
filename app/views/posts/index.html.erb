@@ -12,9 +12,6 @@
         <% end %>
     </div>
     <div id='season'>
-      <%= render 'posts/season.content', genre_name: @genre_name, posts: @posts %>
-      <div class="pagenation">
-        <%= paginate @posts %>
-      </div>
+      <%= render 'posts/season_content', genre_name: @genre_name, posts: @posts %>
     </div>
   </div>

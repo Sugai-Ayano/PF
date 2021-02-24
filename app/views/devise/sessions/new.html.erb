@@ -1,10 +1,10 @@
-<%= flash[:error] %>
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>ログイン</h2>
       <p>会員の方はこちらからログイン</p>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field mt-2">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.text_field :email, autofocus: true, class: "email" %>

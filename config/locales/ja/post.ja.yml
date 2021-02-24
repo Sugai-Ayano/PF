@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        image: "画像"
+        caption: "内容"
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "を入力してください。"
+            image:
+              blank: "を設定してください。"
+            caption:
+              blank: "を入力してください。"

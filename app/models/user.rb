@@ -17,9 +17,9 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true, length: {minimum:6}, on: :create
   validates :introduction, presence: true, length: { maximum: 50 }, on: :update
-  validates :postal_code, presence: true
-  validates :prefecture_code, presence: true
-  validates :city, presence: true
+  validates :postal_code, presence: true, on: :create
+  validates :prefecture_code, presence: true, on: :create
+  validates :city, presence: true, on: :create
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
