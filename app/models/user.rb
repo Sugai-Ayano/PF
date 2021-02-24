@@ -13,13 +13,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   attachment :profile_image, destroy: false
-  validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
-  validates :email, presence: true
-  validates :password, presence: true, length: {minimum:6}, on: :create
-  validates :introduction, presence: true, length: { maximum: 50 }, on: :update
-  validates :postal_code, presence: true, on: :create
-  validates :prefecture_code, presence: true, on: :create
-  validates :city, presence: true, on: :create
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true, allow_blank: true
+  validates :email, presence: true, allow_blank: true
+  validates :password, presence: true, length: {minimum:6}, on: :create, allow_blank: true
+  validates :introduction, presence: true, length: { maximum: 50 }, on: :update, allow_blank: true
+  validates :postal_code, presence: true, on: :create, allow_blank: true
+  validates :prefecture_code, presence: true, on: :create, allow_blank: true
+  validates :city, presence: true, on: :create, allow_blank: true
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

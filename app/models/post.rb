@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   has_many :post_comments
-  belongs_to :user
+  belongs_to :user, optional: true
   enum genre_id: { 春: 0, 夏: 1, 秋: 2, 冬: 3, その他: 4 }
 
   attachment :image, destroy: false

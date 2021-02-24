@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       redirect_to confirm_user_path
     else
        #is_deletedカラムにフラグを立てる(defaultはfalse)
-      @user.update(is_deleted: true)
+      @user.update!("is_deleted"=>"#{params[:is_deleted]}")
       #ログアウトさせる
       reset_session
       redirect_to root_path
@@ -52,8 +52,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
-  end 
+    params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)
+  end
 
   def ensure_correct_user
     @user = User.find(params[:id])

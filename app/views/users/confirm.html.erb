@@ -8,7 +8,7 @@
         退会する場合は、「退会する」をクリックしてください。</p>
         <div class="col-10 mt-2 mx-auto">
           <%= link_to "退会しない", user_path(@user.id), class:"btn btn-info btn-sm mr-5" %>
-          <%= link_to "退会する", hide_user_path(@user.id), method: :patch, class:"btn btn-sm btn-danger" %>
+          <%= link_to "退会する", hide_user_path(id: @user.id, is_deleted: true), method: :patch, class:"btn btn-sm btn-danger" %>
         </div>
       </div>
     </div>
