@@ -1,11 +1,12 @@
   require 'rails_helper'
 
-  Rspec.describe 'Postモデルのテスト', type :model do
+  RSpec.describe Post, 'Postモデルのテスト', type: :model do
     describe'バリテーションのテスト' do
       subject{ post.valid? }
+      user = FactoryBot.create(:user)
 
-      let{:post}{ create(:post) }
-      let!(:post){ build(:post, user_id: user.id) }
+      let(:post){ create(:post, :user => user) }
+#      let!(:post){ build(:post, user_id: user.id) }
 
       context 'titleカラム' do
         it '空白でないこと' do
@@ -26,15 +27,6 @@
         it '200文字以下であること: 201文字は×' do
           post.caption = Faker::Lorem.characters(number: 201)
           is_expected.to eq false
-        end
-      end
-    end
-
-    describe 'アソシエーションのテスト' do
-      context 'Userモデルとの関係' do
-        it 'N:1となっている' do
-          expect(Post.reflect_on_association(:user).macro).to
-          eq :belongs_to
         end
       end
     end

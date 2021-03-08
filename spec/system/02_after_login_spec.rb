@@ -1,9 +1,9 @@
-reqire 'rails_helper'
+require 'rails_helper'
 
 describe '[STEP2]ユーザーログイン後のテスト' do
   let(:user){ create(:user) }
-  let!(other_user){ create(:user) }
-  let!(post){create(:post, user:user) }
+  let!(:other_user){ create(:user) }
+  let!(:post){create(:post, user:user) }
   let!(:other_post){ create(:post, user:other_user) }
 
   before do
@@ -18,10 +18,10 @@ describe '[STEP2]ユーザーログイン後のテスト' do
       expect(current_path).to eq '/posts'
     end
     it '自分と他人の画像のリンク先が正しい' do
-      expect(page).to have_link", href: user_path(post.user)
-      expect(page).to have_link", href: user_path(other_post.user)
+      expect(page).to have_link'', href: user_path(post.user)
+      expect(page).to have_link'', href: user_path(other_post.user)
     end
-    it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい'
+    it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
       expect(page).to have_link post.title, href: post_path(post)
       expect(page).to have_link other_post.title, href: post_path(other_post)
     end
@@ -38,26 +38,12 @@ describe '[STEP2]ユーザーログイン後のテスト' do
     end
 
     it '自分の新しい投稿が正しく保存される' do
-      expect { click_button '投稿' } to change(user.posts, ::count).by(1)
+      expect { click_button '投稿' }.to change(user.posts, :count).by(1)
     end
 
     it 'リダイレクト先が、保存できた投稿の詳細画面になっている' do
       click_button '投稿'
       expect(current_path).to eq'/posts/' + Post.last.id.to_s
-    end
-  end
-
-  desscribe '自分の投稿編集画面のテスト'
-    before do
-      visit edit_post_path(post)
-    end
-
-    context '編集成功のテスト' do
-      @post_old_title = post.title
-      @post_old_caption = post.caption
-      fill_in 'post[title]', with: Faker::Lorem.characters(number: 4)
-      fill_in 'post[caption]', with: Faker::Lorem.characters(number: 19)
-      click_button 'Update Post'
     end
   end
 
