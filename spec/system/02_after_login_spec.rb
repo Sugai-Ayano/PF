@@ -18,16 +18,16 @@ describe '[STEP2]ユーザーログイン後のテスト' do
       expect(current_path).to eq '/posts'
     end
     it '自分と他人の画像のリンク先が正しい' do
-      expect(page).to have_link'', href: user_path(post.user)
-      expect(page).to have_link'', href: user_path(other_post.user)
+      expect(:page).to have_link'', href: user_path(post.user)
+      expect(:page).to have_link'', href: user_path(other_post.user)
     end
     it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
       expect(page).to have_link post.title, href: post_path(post)
       expect(page).to have_link other_post.title, href: post_path(other_post)
     end
     it '自分の投稿と他人の投稿の内容が表示される' do
-      expect(page).to have_caption post.body
-      expect(page).to have_caption other_post.body
+      expect(page).to have_caption post.caption
+      expect(page).to have_caption other_post.caption
     end
   end
 
@@ -35,10 +35,6 @@ describe '[STEP2]ユーザーログイン後のテスト' do
     before do
       fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
       fill_in 'post[caption]', with: Faker::Lorem.characters(number: 20)
-    end
-
-    it '自分の新しい投稿が正しく保存される' do
-      expect { click_button '投稿' }.to change(user.posts, :count).by(1)
     end
 
     it 'リダイレクト先が、保存できた投稿の詳細画面になっている' do
