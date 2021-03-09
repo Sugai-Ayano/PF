@@ -18,16 +18,16 @@ describe '[STEP2]ユーザーログイン後のテスト' do
       expect(current_path).to eq '/posts'
     end
     it '自分と他人の画像のリンク先が正しい' do
-      expect(:page).to have_link'', href: user_path(post.user)
-      expect(:page).to have_link'', href: user_path(other_post.user)
+      expect(page).to have_link'', href: post_path(post)
+      expect(page).to have_link'', href: post_path(other_post)
     end
     it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
       expect(page).to have_link post.title, href: post_path(post)
       expect(page).to have_link other_post.title, href: post_path(other_post)
     end
     it '自分の投稿と他人の投稿の内容が表示される' do
-      expect(page).to have_caption post.caption
-      expect(page).to have_caption other_post.caption
+      expect(page).to have_content post.caption.slice(0..5)
+      expect(page).to have_content other_post.caption.slice(0..5)
     end
   end
 
