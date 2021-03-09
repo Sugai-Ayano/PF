@@ -33,7 +33,9 @@ describe '[STEP2]ユーザーログイン後のテスト' do
 
   context '投稿成功のテスト' do
     before do
+      visit new_post_path
       fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
+      attach_file('post[image]', "#{Rails.root}/public/uploads/7658a25173474f006ae789c8cd58a19616acf09ed8f0ac853907baf1c452")
       fill_in 'post[caption]', with: Faker::Lorem.characters(number: 20)
     end
 
@@ -79,6 +81,7 @@ describe '[STEP2]ユーザーログイン後のテスト' do
       end
 
        it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
+         byebug
         expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
