@@ -82,3 +82,5 @@ end
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'refile-s3', github: 'refile/refile-s3', ref: '768d60d4e5e5e6a00a874767018ff8e31b1da3cd'
