@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     # おすすめ機能
     @recommendations = Recommendation.all
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
-
+    
     if params[:season] == nil
       @posts = Post.page(params[:page]).per(6).order(created_at: :desc)
     else
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     # if post.user ==  current_user
       # @favorited_users = post.favorited_users
     # end
+    @post_url = "https://irodori-bucket.s3-ap-northeast-1.amazonaws.com/store/" + @post.image_id
   end
 
 
