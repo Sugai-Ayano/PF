@@ -77,11 +77,10 @@ describe '[STEP2]ユーザーログイン後のテスト' do
         @user_old_intrpduction = user.introduction
         fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 19)
-        click_button 'Update User'
+        click_button 'Update ユーザ'
       end
 
        it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
-         byebug
         expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
