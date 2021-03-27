@@ -12,23 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_02_21_083643) do
 
-  create_table "authentications", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "provider"
-    t.string "uid"
-    t.string "name"
-    t.string "nickname"
-    t.string "image"
-    t.string "email"
-    t.string "location"
-    t.string "gender"
-    t.string "token"
-    t.string "secret"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authentications_on_user_id"
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -83,10 +66,6 @@ ActiveRecord::Schema.define(version: 2021_02_21_083643) do
     t.string "city"
     t.string "street"
     t.boolean "is_deleted", default: false, null: false
-    t.string "image"
-    t.string "last_login_provider"
-    t.datetime "last_login_at"
-    t.text "user_agent"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
