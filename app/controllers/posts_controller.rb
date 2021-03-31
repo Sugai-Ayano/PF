@@ -22,11 +22,6 @@ class PostsController < ApplicationController
     # その投稿をしたユーザー
     @user = @post.user
     @post_comment = PostComment.new
-    # 投稿にいいねしていいるユーザー一覧が欲しい
-      # post = Post.find(params[:id])
-    # if post.user ==  current_user
-      # @favorited_users = post.favorited_users
-    # end
     @post_url = "https://irodori-bucket.s3-ap-northeast-1.amazonaws.com/store/" + @post.image_id
   end
 
