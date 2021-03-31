@@ -9,6 +9,7 @@ class HomesController < ApplicationController
   end
 
   def new_guest
+    # ユーザーがいない場合email以下のユーザーを作り出す
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲストユーザー'

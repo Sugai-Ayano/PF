@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     # おすすめ機能
     @recommendations = Recommendation.all
+    # post_idが同じコードをまとめ、count(post_id)した結果を降順に並び替える、上から3位
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
     
     if params[:season] == nil

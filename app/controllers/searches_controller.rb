@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
 		@content = params[:content]
 		@method = params[:method]
 		@user = current_user
-		# @post_page = current_user
+
 		if @model == 'user'
 			@records = User.search_for(@content, @method)
 		else

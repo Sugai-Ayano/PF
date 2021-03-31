@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
 
   # ゲストログイン機能
   def check_guest
+    # resource(デバイスのモデルのemailカラムがあればemailに代入する（左辺）、なかったらparamsの中にあるemailをdowncase(すべて小文字にする関数)左辺に)
     email = resource&.email || params[:user][:email].downcase
     if email == 'guest@example.com'
       redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
